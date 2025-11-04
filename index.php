@@ -73,7 +73,7 @@
                 </ul>
 			</td>
 			<td width="85%" height="80%">
-				<iframe name="iframe_a" width="100%" height="100%"  title="school system iframe" style="border:none;"></iframe>
+				<iframe name="iframe_a" width="100%" height="100%"  title="school system iframe" style="border:none;" src="students/index.php"></iframe>
 			</td>
 		</tr>
 		<tr class="footer">

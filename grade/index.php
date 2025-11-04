@@ -93,7 +93,7 @@
 			<th>Grade group</th>
 			<th>Grade color</th>
 			<th>Grade order</th>
-			<th colspan="3" style="text-align:center">Action</th>
+			<th colspan="4" style="text-align:center">Action</th>
 		</tr>
 		<?php 
 		while ($row = mysqli_fetch_array($results)) { ?>   
@@ -104,7 +104,8 @@
 				<td><?php echo $row[4]; ?></td>
 				<td> <a href="delete.php?gr_id=<?php echo $row['gr_id'];?>" onclick="return confirm('Do you want to delete?')"> delete </a> </td>
 				<td> <a href="edit.php?gr_id=<?php echo $row['gr_id'];?>"> edit </a> </td>
-				<td> <a href="show.php?gr_id=<?php echo $row['gr_id'];?>"> show </a> </td>
+				<td> <a href="show.php?gr_id=<?php echo $row['gr_id'];?>"> show </a> </td>			
+				<td> <a href="add_gr_subjects.php?gr_id=<?php echo $row['gr_id'];?>"> Add Subjects </a> </td>
 			</tr>
 		<?php } ?>
 				

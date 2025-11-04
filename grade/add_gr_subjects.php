@@ -79,11 +79,11 @@
 <body>
 	<?php
 
-	$id= $_GET["st_id"];
+	$id= $_GET["gr_id"];
 	
 	require_once ('../config.php');
 	
-	$query="SELECT * FROM students where st_id='$id' ";
+	$query="SELECT * FROM grade where gr_id='$id' ";
 	
 	$results = mysqli_query($connect, $query);
 	
@@ -92,68 +92,32 @@
 	}
 	
 	$row = mysqli_fetch_array($results);
-	
-	// grade
-	$query2 = "SELECT gr_id, grade_name FROM grade";
-		
-	$result2 = mysqli_query($connect, $query2);
-	
-	if (!$result2) {
-		echo mysqli_error($connect);
-	}
-	
 	?>
 	
-	<h2> <?php echo $row["student_name"]?> 's Details </h2>
+	<h2>  Details of <?php echo $row["grade_name"]?>  </h2>
 	<table border="1">
 		<tr>
-			<th>Father Name</th>
-			<td> <?php echo $row["father_name"]; ?> </td>
+			<th>Grade name</th>
+			<td> <?php echo $row["grade_name"]; ?> </td>
 		</tr>
 		<tr>
-			<th>Student Name</th>
-			<td> <?php echo $row["student_name"]; ?></td>
+			<th>Grade group</th>
+			<td> <?php echo $row["grade_group"]; ?></td>
 		</tr>
 		<tr>
-			<th>Admission No </th>
-			<td> <?php echo $row["admission_no"]; ?></td>
+			<th>Grade color </th>
+			<td> <?php echo $row["grade_color"]; ?></td>
 		</tr>
 		<tr>
-			<th>Grade </th>
-			<!-- <td> <?php echo $row["grade_id"]; ?></td>  -->
-			<td> <?php while ($row2 = mysqli_fetch_array($result2)) { 
-						if($row2["gr_id"]==$row["grade_id"]){echo $row2["grade_name"];}
-				}
-				?>
-			</td> 
-			<!--  <td> <?php echo $row["grade_name"]; ?> </td>  -->
-		</tr>
-		<tr>
-			<th>NIC No</th>
-			<td> <?php echo $row["nic_no"]; ?></td>
-		</tr>	
-		<tr>
-			<th>Date of Birth</th>
-			<td> <?php echo $row["date_of_birth"]; ?></td>
-		</tr>	
-		<tr>
-			<th>Gender</th>
-			<td> <?php echo $row["gender"]; ?></td>
-		</tr>	
-		<tr>
-			<th>Telephone No</th>
-			<td> <?php echo $row["telephone_no"]; ?></td>
-		</tr>	
-		<tr>
-			<th>Address</th>
-			<td> <?php echo $row["address"]; ?></td>
-		</tr>	
+			<th>Grade order</th>
+			<td> <?php echo $row["grade_order"]; ?></td>
+		</tr>		
 	</table>
 	
 	
 	
 	<?php
-		$query_sub="SELECT * FROM student_subject where st_id='$id' ";
+		$query_sub="SELECT * FROM subject_grade where gr_id='$id' ";
 	
 		$result3 = mysqli_query($connect, $query_sub);
 		
@@ -198,14 +162,28 @@
 	
 	
 	
-
+	
+	
+	
+	
 	
 	
 	<?php
 		//  subjects 
-		
-		
-	$query_sub="SELECT * FROM student_subject where st_id='$id' ";
+	$query2 = "SELECT sub_id, subject_name FROM subjects";
+	$result2 = mysqli_query($connect, $query2);
+
+	if (!$result2) {
+		echo mysqli_error($connect);
+	}
+
+	$subjects = [];
+	while ($row1 = mysqli_fetch_assoc($result2)) {
+		$subjects[] = $row1;  // store all rows
+	}
+
+	
+	$query_sub="SELECT * FROM subject_grade where gr_id='$id' ";
 	
 	$result3 = mysqli_query($connect, $query_sub);
 		
@@ -213,44 +191,19 @@
 	while ($row3 = mysqli_fetch_assoc($result3)) {
 		$selected_subjects[] = $row3["sub_id"];  
 	}
+
 	?>
 	<br>
-	
-	
-	<form action="student_subject_store.php" method="post"> 
-	<input type="hidden" name="st_id" value="<?php echo $id; ?>">
+	<form action="subject_grade_store.php" method="post"> 
+	<input type="hidden" name="gr_id" value="<?php echo $id; ?>">
 	<table border="1">
 		<tr>
 			<td><label for="subject">Subjects:</label></td>
 			<td>
-			<?php 
-				//$query2 = "SELECT sub_id, subject_name FROM subjects";
-				
-				$gr_id= $row["grade_id"];
-				$query2 = "SELECT sub_id FROM subject_grade where gr_id='$gr_id' ";
-				$result2 = mysqli_query($connect, $query2);
-
-				if (!$result2) {
-					echo mysqli_error($connect);
-				}
-				
-				$subjects = [];
-				while ($row2 = mysqli_fetch_assoc($result2)) {
-					$subjects[] = $row2["sub_id"];  
-					
-					$sub_id= $row2["sub_id"];
-					$query3= "SELECT subject_name FROM subjects where sub_id='$sub_id' ";
-					$result3 = mysqli_query($connect, $query3);
-					
-					$row3 = mysqli_fetch_assoc($result3);	?>	
-					<input type="checkbox" id="subjects" name="subjects[]" value="<?php echo $sub_id; ?>" <?php if(in_array($sub_id,$selected_subjects)){echo "checked";} ?>>
-					<label><?php echo $row3["subject_name"]; ?></label><br>
-				<?php } ?>
-			
-			<?php /*foreach ($subjects as $subject): ?>
+			<?php foreach ($subjects as $subject): ?>
 					<input type="checkbox" id="subjects" name="subjects[]" value="<?php echo $subject['sub_id']; ?>" <?php if(in_array($subject['sub_id'],$selected_subjects)){echo "checked";} ?>>
 					<label><?php echo $subject['subject_name']; ?></label><br>
-				<?php endforeach; */ ?>
+				<?php endforeach; ?>
 					
 			
 			<!-- using while loop only -->

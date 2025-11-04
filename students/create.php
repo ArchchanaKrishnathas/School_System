@@ -71,8 +71,7 @@
 	
 		require_once ('../config.php');
 
-		//$query = "SELECT gr_id, grade_name FROM grade ORDER BY grade_name";
-		$query = "SELECT gr_id, grade_name FROM grade;
+		$query = "SELECT gr_id, grade_name FROM grade ORDER BY grade_name";
 		
 		$results = mysqli_query($connect, $query);
 	
@@ -117,7 +116,7 @@
 						<?php }  ?>
 				</select>
 			</td>
-      </tr>
+      </tr> 
 	 <tr>
 			<td>
 				<label for="nic_no" >NIC No</label><br>

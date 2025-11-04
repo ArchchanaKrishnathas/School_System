@@ -13,6 +13,16 @@
 		
 	$row = mysqli_fetch_array($results);
 	
+	
+	
+	$query2 = "SELECT gr_id, grade_name FROM grade";
+		
+	$result2 = mysqli_query($connect, $query2);
+	
+	if (!$result2) {
+		echo mysqli_error($connect);
+	}
+	
 ?>
 
 <html>
@@ -113,16 +123,16 @@
       </tr>
 	  <tr>
 			<td>
-				<!-- <input type="hidden" id="grade_id" name="grade_id" value="<?php echo $row["grade_id"]; ?>">   -->
+				<!-- <input type="hidden" id="grade_id" name="grade_id" value="<?php echo $row2["grade_id"]; ?>">   -->
 				<label for="grade_id"> Grade </label>
 				
 				<select name="grade_id" id="grade_id">	 
 					<?php 
-						while ($row = mysqli_fetch_array($results)) { ?>   
-						<option value=" <?php echo $row["gr_id"] ?>"> <?php echo $row["grade_name"] ?> </option>
+						while ($row2 = mysqli_fetch_array($result2)) { ?>   
+						<option value="<?php echo $row2["gr_id"] ?>" <?php if($row["grade_id"]==$row2["gr_id"]){"selected";} ?> > <?php echo $row2["grade_name"] ?> </option>
 						<?php }  ?>
 				</select>
-			</td>
+			</td> 
       </tr>
 	 <tr>
 			<td>

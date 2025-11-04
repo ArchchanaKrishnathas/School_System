@@ -54,6 +54,7 @@
 	require_once ('../config.php');
 	
 	$query="SELECT * FROM students where st_id='$id' ";
+	//$query = "SELECT students.*,grade.grade_name FROM students INNER JOIN grade ON students.grade_id = grade.gr_id where st_id='$id' ";
 	
 	$results = mysqli_query($connect, $query);
 	
@@ -62,6 +63,17 @@
 	}
 	
 	$row = mysqli_fetch_array($results);
+	
+	
+	// grade
+	$query2 = "SELECT gr_id, grade_name FROM grade";
+		
+	$result2 = mysqli_query($connect, $query2);
+	
+	if (!$result2) {
+		echo mysqli_error($connect);
+	}
+
 	?>
 	
 	<h2> <?php echo $row["student_name"]?> 's Details </h2>
@@ -77,6 +89,16 @@
 		<tr>
 			<th>Admission No </th>
 			<td> <?php echo $row["admission_no"]; ?></td>
+		</tr>
+		<tr>
+			<th>Grade </th>
+			<!-- <td> <?php echo $row["grade_id"]; ?></td>  -->
+			<td> <?php while ($row2 = mysqli_fetch_array($result2)) { 
+						if($row2["gr_id"]==$row["grade_id"]){echo $row2["grade_name"];}
+				}
+				?>
+			</td> 
+			<!--  <td> <?php echo $row["grade_name"]; ?> </td>  -->
 		</tr>
 		<tr>
 			<th>NIC No</th>
