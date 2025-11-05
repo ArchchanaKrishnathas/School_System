@@ -100,7 +100,7 @@
 			<tr>
 				<td><?php echo $row[1]; ?></td>
 				<td><?php echo $row[2]; ?></td>
-				<td><?php echo $row[3]; ?></td>
+				<td> <input type="color" value="<?php echo $row[3]; ?>"></td>
 				<td><?php echo $row[4]; ?></td>
 				<td> <a href="delete.php?gr_id=<?php echo $row['gr_id'];?>" onclick="return confirm('Do you want to delete?')"> delete </a> </td>
 				<td> <a href="edit.php?gr_id=<?php echo $row['gr_id'];?>"> edit </a> </td>

@@ -53,8 +53,8 @@
 	
 	require_once ('../config.php');
 	
-	$query="SELECT * FROM students where st_id='$id' ";
-	//$query = "SELECT students.*,grade.grade_name FROM students INNER JOIN grade ON students.grade_id = grade.gr_id where st_id='$id' ";
+	//$query="SELECT * FROM students where st_id='$id' ";
+	$query = "SELECT students.*,grade.grade_name FROM students INNER JOIN grade ON students.grade_id = grade.gr_id WHERE st_id='$id' ";
 	
 	$results = mysqli_query($connect, $query);
 	
@@ -93,12 +93,13 @@
 		<tr>
 			<th>Grade </th>
 			<!-- <td> <?php echo $row["grade_id"]; ?></td>  -->
-			<td> <?php while ($row2 = mysqli_fetch_array($result2)) { 
+			<!-- <td> <?php while ($row2 = mysqli_fetch_array($result2)) { 
 						if($row2["gr_id"]==$row["grade_id"]){echo $row2["grade_name"];}
 				}
-				?>
+				?>   OR -->
 			</td> 
-			<!--  <td> <?php echo $row["grade_name"]; ?> </td>  -->
+			<!-- Using Inner Join -->
+			<td> <?php echo $row["grade_name"]; ?> </td>  
 		</tr>
 		<tr>
 			<th>NIC No</th>

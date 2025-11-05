@@ -80,7 +80,7 @@
 		</tr>
 		<tr>
 			<th>Subject Color</th>
-			<td> <?php echo $row["subject_color"]; ?></td>
+			<td> <input type="color" value="<?php echo $row["subject_color"]; ?>"></td>
 		</tr>
 		<tr>
 			<th>Subject No</th>

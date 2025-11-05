@@ -88,7 +88,7 @@
 	 <tr>
 			<td>
 				<label for="subject_color" >Subject Color </label><br>
-				<input type="color" id="subject_color" name="subject_color" step="any" required>
+				<input type="color" id="subject_color" name="subject_color" required>
 			</td>
 	 </tr>
 	 <tr>

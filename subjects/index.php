@@ -101,7 +101,7 @@
 				<td><?php echo $row[1]; ?></td>
 				<td><?php echo $row[2]; ?></td>
 				<td><?php echo $row[3]; ?></td>
-				<td><?php echo $row[4]; ?></td>
+				<td> <input type="color" value="<?php echo $row[4]; ?>"></td>
 				<td><?php echo $row[5]; ?></td>
 				<td> <a href="delete.php?sub_id=<?php echo $row['sub_id'];?>" onclick="return confirm('Do you want to delete?')"> delete </a> </td>
 				<td> <a href="edit.php?sub_id=<?php echo $row['sub_id'];?>"> edit </a> </td>

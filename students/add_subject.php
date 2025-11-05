@@ -98,9 +98,6 @@
 		
 	$result2 = mysqli_query($connect, $query2);
 	
-	if (!$result2) {
-		echo mysqli_error($connect);
-	}
 	
 	?>
 	
@@ -153,20 +150,20 @@
 	
 	
 	<?php
+	
 		$query_sub="SELECT * FROM student_subject where st_id='$id' ";
 	
 		$result3 = mysqli_query($connect, $query_sub);
 		
-		if (!$result3) {
-			echo mysqli_error($connect);
-		}
-		
 		$sub_array = [];
 		while ($row3 = mysqli_fetch_assoc($result3)) {
-			$sub_array[] = $row3["sub_id"];  
+			$sub_array[] = $row3["sub_id"];
+		
 		}
-		//echo var_dump($sub_array);
+		//echo var_dump($sub_array);    
 	?>
+	
+	
 	<br>
 	
 	<table border="1">
@@ -175,23 +172,24 @@
 		</tr>
 		 
 			<?php 
+			if(empty($sub_array)){   ?>
+				<tr> <td> <i> No Subjects Selected </i> </td> </tr>
+			<?php 
+			} else{
 			foreach($sub_array as $subject_id){
 				
 				$query= "SELECT * FROM subjects WHERE sub_id=$subject_id";
 				
 				$result4 = mysqli_query($connect, $query);
-		
-				if (!$result4) {
-					echo mysqli_error($connect);
-				}
 				
-				$row4 = mysqli_fetch_assoc($result4); ?>
+				$row4 = mysqli_fetch_assoc($result4);
+			 ?>
 			<tr>
 			<td>	
 				<?php echo $row4["subject_name"]; ?>
 			</td> </tr>
 			<?php
-			} 
+			} }
 			?> 
 		</tr>
 	</table>
@@ -203,8 +201,6 @@
 	
 	<?php
 		//  subjects 
-		
-		
 	$query_sub="SELECT * FROM student_subject where st_id='$id' ";
 	
 	$result3 = mysqli_query($connect, $query_sub);
@@ -229,10 +225,6 @@
 				$gr_id= $row["grade_id"];
 				$query2 = "SELECT sub_id FROM subject_grade where gr_id='$gr_id' ";
 				$result2 = mysqli_query($connect, $query2);
-
-				if (!$result2) {
-					echo mysqli_error($connect);
-				}
 				
 				$subjects = [];
 				while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -242,8 +234,10 @@
 					$query3= "SELECT subject_name FROM subjects where sub_id='$sub_id' ";
 					$result3 = mysqli_query($connect, $query3);
 					
-					$row3 = mysqli_fetch_assoc($result3);	?>	
-					<input type="checkbox" id="subjects" name="subjects[]" value="<?php echo $sub_id; ?>" <?php if(in_array($sub_id,$selected_subjects)){echo "checked";} ?>>
+					$row3 = mysqli_fetch_assoc($result3);	
+					$checked = in_array($sub_id,$selected_subjects)? "checked": "" ; 
+					?>	
+					<input type="checkbox" id="subjects" name="subjects[]" value="<?php echo $sub_id; ?>" <?php echo $checked; ?>>
 					<label><?php echo $row3["subject_name"]; ?></label><br>
 				<?php } ?>
 			

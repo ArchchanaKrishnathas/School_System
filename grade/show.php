@@ -76,7 +76,7 @@
 		</tr>
 		<tr>
 			<th>Grade color </th>
-			<td> <?php echo $row["grade_color"]; ?></td>
+			<td> <input type="color" value="<?php echo $row["grade_color"]; ?>"> </td>
 		</tr>
 		<tr>
 			<th>Grade order</th>

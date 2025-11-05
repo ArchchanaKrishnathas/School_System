@@ -4,7 +4,7 @@
 	require_once ('../config.php');
 		
 	$query="SELECT * FROM students WHERE st_id='$id' ";
-		
+	
 	$results = mysqli_query($connect,$query);
 				
 	if(!$results){
@@ -53,6 +53,9 @@
       width: 100%;
     }
 
+	td, th {
+	  padding-top: 10px;  
+	}
     label {
       font-weight: bold;
     }
@@ -129,7 +132,8 @@
 				<select name="grade_id" id="grade_id">	 
 					<?php 
 						while ($row2 = mysqli_fetch_array($result2)) { ?>   
-						<option value="<?php echo $row2["gr_id"] ?>" <?php if($row["grade_id"]==$row2["gr_id"]){"selected";} ?> > <?php echo $row2["grade_name"] ?> </option>
+						<!-- <option value="<?php echo $row2["gr_id"] ?>" <?php if($row["grade_id"]==$row2["gr_id"]){echo "selected";} ?> > <?php echo $row2["grade_name"] ?> </option>  -->
+						<option value="<?php echo $row2["gr_id"] ?>" <?php if($row["grade_id"]==$row2["gr_id"]){echo "selected";} ?> > <?php echo $row2["grade_name"] ?> </option>
 						<?php }  ?>
 				</select>
 			</td> 
@@ -164,7 +168,7 @@
 	 <tr>
 			<td>
 				<label for="address" >Address</label><br>
-				<textarea id="address" name="address" rows="4" cols="50" value="<?php echo $row["address"]; ?>">
+				<textarea id="address" name="address" rows="4" cols="50"> <?php echo $row["address"]; ?>
 				</textarea>
 			</td>
 	 </tr>

@@ -26,6 +26,10 @@
       width: 100%;
     }
 
+	td, th {
+	  padding-top: 10px;  
+	}
+	
     label {
       font-weight: bold;
     }
