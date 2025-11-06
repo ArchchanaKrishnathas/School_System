@@ -168,12 +168,12 @@
 	
 	<table border="1">
 		<tr>
-			<th>Subjects</th>
+			<th colspan="2">Subjects</th>
 		</tr>
 		 
 			<?php 
 			if(empty($sub_array)){   ?>
-				<tr> <td> <i> No Subjects Selected </i> </td> </tr>
+				<tr> <td colspan="2"> <i> No Subjects Selected </i> </td> </tr>
 			<?php 
 			} else{
 			foreach($sub_array as $subject_id){
@@ -187,7 +187,12 @@
 			<tr>
 			<td>	
 				<?php echo $row4["subject_name"]; ?>
-			</td> </tr>
+			</td> 
+			<td>
+				<a href="delete_subject.php?st_id=<?php echo $row['st_id']; ?>&sub_id=<?php echo $row4['sub_id']; ?>" onclick="return confirm('Do you want to delete this subject?')">  Delete </a>	
+			</td>
+
+			</tr>
 			<?php
 			} }
 			?> 

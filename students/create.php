@@ -87,7 +87,7 @@
 	?>
 	
   <h2>Student Registration</h2>
-  <form action="store.php" method="POST">
+  <form action="store.php" method="POST" enctype="multipart/form-data">
     <table>
 		<tr>
 			<td>
@@ -155,6 +155,12 @@
 				</textarea>
 			</td>
 	 </tr>
+   <tr>
+        <td>
+          <label for="student_image">Upload Image</label> <br>
+          <input type="file" id="student_image" name="student_image" accept="Image/* ">
+        </td>
+   </tr>
       <tr>
 			<td class="submit-container">
 			  <input type="submit" value="Register">

@@ -64,6 +64,10 @@
 			color: #004080;
 			text-decoration: underline;
 		}
+		
+		img{
+			border-radius:50%;
+		}
 	</style>
 </head>
 <body>
@@ -74,7 +78,12 @@
 	//$query = "SELECT s.*,g.grade_name FROM students AS s INNER JOIN grade AS g ON s.grade_id = g.gr_id";
 	
 	$query = "SELECT students.*,grade.grade_name FROM students INNER JOIN grade ON students.grade_id = grade.gr_id";
-	
+	/*   // Soft Delete
+	$query = "SELECT students.*, grade.grade_name 
+	FROM students 
+	INNER JOIN grade ON students.grade_id = grade.gr_id 
+	WHERE students.deleted_at IS NULL";
+	*/
 	$results = mysqli_query($connect, $query);
 	
 	if (!$results) {
@@ -92,6 +101,7 @@
 	
 	<table border="1">
 		<tr>
+			<th>Student Profile</th>
 			<th>Father Name</th>
 			<th>Student Name</th>
 			<th>Admission No</th>
@@ -107,6 +117,7 @@
 		<?php 
 		while ($row = mysqli_fetch_array($results)) { ?>   
 			<tr>
+				<td><img src="<?php echo $row["image_path"]; ?>" alt="profile pic" height="60" width="60" ></td>
 				<td><?php echo $row[1]; ?></td>
 				<td><?php echo $row[2]; ?></td>
 				<td><?php echo $row[3]; ?></td>

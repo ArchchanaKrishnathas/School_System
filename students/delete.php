@@ -4,7 +4,12 @@
 	require_once ('../config.php');
 		
 	$query="DELETE FROM students WHERE st_id='$id' ";
-		
+	/* // Soft Delete
+	$query="UPDATE students
+	SET deleted_at = NOW()
+	WHERE st_id = $id; ";
+	*/
+	
 	$results = mysqli_query($connect,$query);
 					
 	if(!$results){
@@ -12,6 +17,10 @@
 	}else{
 		echo "query Executed !!";
 	}
-	
 	header("location:index.php");
+
 ?>
+
+
+
+

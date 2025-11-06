@@ -70,7 +70,7 @@
 		<tr>
 			<td>
 				<label for="subject_name">Subject name</label>
-				<input type="text" id="subject_name" name="subject_name">
+				<input type="text" id="subject_name" name="subject_name" >
 			</td>
 		</tr>
 		<tr>

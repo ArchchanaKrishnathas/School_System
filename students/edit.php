@@ -45,7 +45,7 @@
       border: 1px solid #ccc;
       border-radius: 5px;
       padding: 20px;
-      width: 350px;
+      width: 480px;
       margin: 0 auto;
     }
 
@@ -95,15 +95,30 @@
     input[type="submit"]:hover {
       background-color: #004c99;
     }
+	img{
+		border-radius:50%;
+	}
   </style>
 </head>
 <body>
   <h2>Edit Student's Details</h2>
-  <form action="update.php" method="POST">
+  <form action="update.php" method="POST" enctype="multipart/form-data">
     <table>
 		<tr>
 			<td>
 				<input type="hidden" id="st_id" name="st_id" value="<?php echo $id ?>" >
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" style="text-align: center"><img src="<?php echo $row["image_path"]; ?>" alt="profile pic" height="180px" width="180px" ></td>
+		<tr>
+		 <tr>
+			<td>
+				 <label for="student_image">Edit profile</label>
+				 <input type="file" id="student_image" name="student_image" accept="Image/* "> 
+			
+		
+				 <a href="delete_profile.php?st_id=<?php echo $id; ?>" onclick="return confirm('Do you want to delete this profile?')" style="color:red">  delete profile</a>    <br>
 			</td>
 		</tr>
 		<tr>

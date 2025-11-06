@@ -43,6 +43,28 @@
 		a:hover {
 		  text-decoration: underline;
 		}
+	
+		.back {
+			text-align: center;
+			margin-top: 15px;
+			}
+		
+		.back-btn {
+			display: inline-block;
+			background-color: #ADD8E6;
+			color: black;
+			padding: 8px 16px;
+			border-radius: 5px;
+			text-decoration: none;
+			font-weight: bold;
+			border: none;
+			cursor: pointer;
+			transition: background-color 0.2s ease;
+			}
+
+			.back-btn:hover {
+			background-color: #87CEEB;
+		}
 	  </style>
 </head>
 </head>
@@ -87,5 +109,10 @@
 			<td> <?php echo $row["subject_no"]; ?></td>
 		</tr>
 	</table>
+	
+	<div class="back">
+    	<a href="index.php" class="back-btn">← Back to Subjects List</a>
+	</div>
+	
 </body>
 </html>

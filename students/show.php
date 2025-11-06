@@ -43,6 +43,32 @@
 		a:hover {
 		  text-decoration: underline;
 		}
+		
+		.back {
+			text-align: center;
+			margin-top: 15px;
+			}
+		
+		.back-btn {
+			display: inline-block;
+			background-color: #ADD8E6;
+			color: black;
+			padding: 8px 16px;
+			border-radius: 5px;
+			text-decoration: none;
+			font-weight: bold;
+			border: none;
+			cursor: pointer;
+			transition: background-color 0.2s ease;
+			}
+
+			.back-btn:hover {
+			background-color: #87CEEB;
+			}
+		
+			img{
+				border-radius:50%;
+			}
 	  </style>
 </head>
 </head>
@@ -78,6 +104,8 @@
 	
 	<h2> <?php echo $row["student_name"]?> 's Details </h2>
 	<table border="1">
+		<tr>
+			<td colspan="2" style="text-align: center"><img src="<?php echo $row["image_path"]; ?>" alt="" height="200px" width="200px" ></td>
 		<tr>
 			<th>Father Name</th>
 			<td> <?php echo $row["father_name"]; ?> </td>
@@ -122,5 +150,9 @@
 			<td> <?php echo $row["address"]; ?></td>
 		</tr>	
 	</table>
+	
+	<div class="back">
+    	<a href="index.php" class="back-btn">← Back to Student List</a>
+	</div>
 </body>
 </html>
