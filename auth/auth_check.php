@@ -5,4 +5,4 @@
 		header("location:/Archchana/School_System_CRUD_PHP/auth/login.php");
 		exit();
 	}
-?>
+?> 
