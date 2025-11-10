@@ -110,7 +110,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="2" style="text-align: center"><img src="<?php echo $row["image_path"]; ?>" alt="profile pic" height="180px" width="180px" ></td>
+			<?php 
+				if(empty($row["image_path"])){		
+					$path= "./uploads/default_img.jpg";
+				} else{
+					$path= $row["image_path"];
+				}
+			?>
+			<td colspan="2" style="text-align: center"><img src="<?php echo $path; ?>" alt="profile pic" height="180px" width="180px" ></td>
 		<tr>
 		 <tr>
 			<td>

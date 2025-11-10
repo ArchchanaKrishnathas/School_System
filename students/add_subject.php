@@ -217,7 +217,6 @@
 	?>
 	<br>
 	
-	
 	<form action="student_subject_store.php" method="post"> 
 	<input type="hidden" name="st_id" value="<?php echo $id; ?>">
 	<table border="1">

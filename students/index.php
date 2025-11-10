@@ -115,9 +115,15 @@
 			
 		</tr>
 		<?php 
-		while ($row = mysqli_fetch_array($results)) { ?>   
+		while ($row = mysqli_fetch_array($results)) { 
+			if(empty($row["image_path"])){		
+				$path= "./uploads/default_img.jpg";
+			} else{
+				$path= $row["image_path"];
+			}
+			?>   
 			<tr>
-				<td><img src="<?php echo $row["image_path"]; ?>" alt="profile pic" height="60" width="60" ></td>
+				<td><img src="<?php echo $path; ?>" alt="profile pic" height="60" width="60" ></td>
 				<td><?php echo $row[1]; ?></td>
 				<td><?php echo $row[2]; ?></td>
 				<td><?php echo $row[3]; ?></td>

@@ -105,7 +105,14 @@
 	<h2> <?php echo $row["student_name"]?> 's Details </h2>
 	<table border="1">
 		<tr>
-			<td colspan="2" style="text-align: center"><img src="<?php echo $row["image_path"]; ?>" alt="" height="200px" width="200px" ></td>
+			<?php 
+				if(empty($row["image_path"])){		
+					$path= "./uploads/default_img.jpg";
+				} else{
+					$path= $row["image_path"];
+				}
+			?>
+			<td colspan="2" style="text-align: center"> <img src="<?php echo $path; ?>" alt="" height="200px" width="200px" > </td>
 		<tr>
 			<th>Father Name</th>
 			<td> <?php echo $row["father_name"]; ?> </td>
