@@ -63,7 +63,7 @@
 			<td colspan="2" width="100%" height="10%"><h2> School System</h2></td>
 		</tr>
 		<tr class="sidebar">
-			<td width="15%" height="80%">
+			<td width="10%" height="80%">
 			    <ul>
                         <li><a href="students" target="iframe_a">Students</a></li>
                         <li><a href="subjects" target="iframe_a">Subjects</a></li>
@@ -72,7 +72,7 @@
 						<li><a href="auth/logout.php"> Logout</a></li>
                 </ul>
 			</td>
-			<td width="85%" height="80%">
+			<td width="90%" height="80%">
 				<iframe name="iframe_a" width="100%" height="100%"  title="school system iframe" style="border:none;" src="students/index.php"></iframe>
 			</td>
 		</tr>

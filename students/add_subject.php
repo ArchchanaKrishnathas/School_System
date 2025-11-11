@@ -67,12 +67,15 @@
 			border: none;
 			cursor: pointer;
 			transition: background-color 0.2s ease;
-			}
+		}
 
-			.back-btn:hover {
+		.back-btn:hover {
 			background-color: #87CEEB;
-			}
-
+		}
+	
+		img{
+			border-radius:50%;	
+		}
 	  </style>
 </head>
 </head>
@@ -103,6 +106,16 @@
 	
 	<h2> <?php echo $row["student_name"]?> 's Details </h2>
 	<table border="1">
+		<tr>
+			<?php 
+				if(empty($row["image_path"])){		
+					$path= "./uploads/default_img.jpg";
+				} else{
+					$path= $row["image_path"];
+				}
+			?>
+			<td colspan="2" style="text-align: center"> <img src="<?php echo $path; ?>" alt="" height="200px" width="200px" > </td>
+		</tr>
 		<tr>
 			<th>Father Name</th>
 			<td> <?php echo $row["father_name"]; ?> </td>

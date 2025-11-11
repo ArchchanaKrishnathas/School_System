@@ -113,6 +113,7 @@
 				}
 			?>
 			<td colspan="2" style="text-align: center"> <img src="<?php echo $path; ?>" alt="" height="200px" width="200px" > </td>
+		</tr>
 		<tr>
 			<th>Father Name</th>
 			<td> <?php echo $row["father_name"]; ?> </td>
