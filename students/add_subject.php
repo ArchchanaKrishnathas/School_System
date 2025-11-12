@@ -97,7 +97,7 @@
 	$row = mysqli_fetch_array($results);
 	
 	// grade
-	$query2 = "SELECT gr_id, grade_name FROM grade";
+	$query2 = "SELECT gr_id, grade_name FROM grades";
 		
 	$result2 = mysqli_query($connect, $query2);
 	

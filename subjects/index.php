@@ -80,7 +80,7 @@
 	include('../auth/auth_check.php');
 	?>
 	
-	<h2>Subjects' Details</h2>
+	<h2>Subjects Details</h2>
 
 	<div class="container">
 		<a href="create.php" class="add-btn">+ Add Subject</a>
@@ -98,11 +98,11 @@
 		<?php 
 		while ($row = mysqli_fetch_array($results)) { ?>   
 			<tr>
-				<td><?php echo $row[1]; ?></td>
-				<td><?php echo $row[2]; ?></td>
-				<td><?php echo $row[3]; ?></td>
-				<td> <input type="color" value="<?php echo $row[4]; ?>"></td>
-				<td><?php echo $row[5]; ?></td>
+				<td><?php echo $row["subject_name"]; ?></td>
+				<td><?php echo $row["subject_index"]; ?></td>
+				<td><?php echo $row["subject_order"]; ?></td>
+				<td> <input type="color" value="<?php echo $row["subject_color"]; ?>"></td>
+				<td><?php echo $row["subject_no"]; ?></td>
 				<td> <a href="delete.php?sub_id=<?php echo $row['sub_id'];?>" onclick="return confirm('Do you want to delete?')"> delete </a> </td>
 				<td> <a href="edit.php?sub_id=<?php echo $row['sub_id'];?>"> edit </a> </td>
 				<td> <a href="show.php?sub_id=<?php echo $row['sub_id'];?>"> show </a> </td>

@@ -7,7 +7,7 @@
 	
 	require_once ('../config.php');
 		
-	$query="UPDATE grade SET grade_name= '$gr_name', grade_group='$gr_group',grade_color='$gr_color',grade_order='$gr_order' where gr_id=$id ";
+	$query="UPDATE grades SET grade_name= '$gr_name', grade_group='$gr_group',grade_color='$gr_color',grade_order='$gr_order' where gr_id=$id ";
 		
 	$results = mysqli_query($connect,$query);
 				

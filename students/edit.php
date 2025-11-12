@@ -15,13 +15,7 @@
 	
 	
 	
-	$query2 = "SELECT gr_id, grade_name FROM grade";
-		
-	$result2 = mysqli_query($connect, $query2);
 	
-	if (!$result2) {
-		echo mysqli_error($connect);
-	}
 	
 ?>
 
@@ -111,6 +105,7 @@
 		</tr>
 		<tr>
 			<?php 
+
 				if(empty($row["image_path"])){		
 					$path= "./uploads/default_img.jpg";
 				} else{
@@ -152,11 +147,19 @@
 				<label for="grade_id"> Grade </label>
 				
 				<select name="grade_id" id="grade_id">	 
-					<?php 
-						while ($row2 = mysqli_fetch_array($result2)) { ?>   
-						<!-- <option value="<?php echo $row2["gr_id"] ?>" <?php if($row["grade_id"]==$row2["gr_id"]){echo "selected";} ?> > <?php echo $row2["grade_name"] ?> </option>  -->
+					<?php 		
+						$query2 = "SELECT gr_id, grade_name FROM grades";
+							
+						$result2 = mysqli_query($connect, $query2);
+						
+						if (!$result2) {
+							echo mysqli_error($connect);
+						}
+						
+						while ($row2 = mysqli_fetch_assoc($result2)) { ?>  
 						<option value="<?php echo $row2["gr_id"] ?>" <?php if($row["grade_id"]==$row2["gr_id"]){echo "selected";} ?> > <?php echo $row2["grade_name"] ?> </option>
-						<?php }  ?>
+					<?php }   ?>
+			
 				</select>
 			</td> 
       </tr>

@@ -70,7 +70,7 @@
 	<?php
 	require_once ('../config.php');
 	
-	$query = "SELECT * FROM grade";
+	$query = "SELECT * FROM grades";
 	$results = mysqli_query($connect, $query);
 	
 	if (!$results) {
@@ -81,7 +81,7 @@
 
 	?>
 	
-	<h2>Grade Details</h2>
+	<h2>Grades Details</h2>
 
 	<div class="container">
 		<a href="create.php" class="add-btn">+ Add Grade</a>
@@ -98,10 +98,10 @@
 		<?php 
 		while ($row = mysqli_fetch_array($results)) { ?>   
 			<tr>
-				<td><?php echo $row[1]; ?></td>
-				<td><?php echo $row[2]; ?></td>
-				<td> <input type="color" value="<?php echo $row[3]; ?>"></td>
-				<td><?php echo $row[4]; ?></td>
+				<td><?php echo $row["grade_name"]; ?></td>
+				<td><?php echo $row["grade_group"]; ?></td>
+				<td> <input type="color" value="<?php echo $row["grade_color"]; ?>"></td>
+				<td><?php echo $row["grade_order"]; ?></td>
 				<td> <a href="delete.php?gr_id=<?php echo $row['gr_id'];?>" onclick="return confirm('Do you want to delete?')"> delete </a> </td>
 				<td> <a href="edit.php?gr_id=<?php echo $row['gr_id'];?>"> edit </a> </td>
 				<td> <a href="show.php?gr_id=<?php echo $row['gr_id'];?>"> show </a> </td>			

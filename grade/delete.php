@@ -3,7 +3,7 @@
 	
 	require_once ('../config.php');
 		
-	$query="DELETE FROM grade WHERE gr_id='$id' ";
+	$query="DELETE FROM grades WHERE gr_id='$id' ";
 		
 	$results = mysqli_query($connect,$query);
 					

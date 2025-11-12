@@ -2,7 +2,7 @@
 	session_start();
 	
 	if(!$_SESSION['user_name']){
-		header("location:/Archchana/School_System_CRUD_PHP/auth/login.php");
+		header("location:/archchana/school-system/auth/login.php");
 		exit();
 	}
 ?> 

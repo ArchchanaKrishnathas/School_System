@@ -80,7 +80,7 @@
 	require_once ('../config.php');
 	
 	//$query="SELECT * FROM students where st_id='$id' ";
-	$query = "SELECT students.*,grade.grade_name FROM students INNER JOIN grade ON students.grade_id = grade.gr_id WHERE st_id='$id' ";
+	$query = "SELECT students.*,grades.grade_name FROM students INNER JOIN grades ON students.grade_id = grades.gr_id WHERE st_id='$id' ";
 	
 	$results = mysqli_query($connect, $query);
 	
@@ -92,7 +92,7 @@
 	
 	
 	// grade
-	$query2 = "SELECT gr_id, grade_name FROM grade";
+	$query2 = "SELECT gr_id, grade_name FROM grades";
 		
 	$result2 = mysqli_query($connect, $query2);
 	

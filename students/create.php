@@ -68,6 +68,19 @@
     input[type="submit"]:hover {
       background-color: #004c99;
     }
+	
+	.error{
+		width: 40%;
+		margin: 15px auto;
+		padding: 10px 15px;
+		font-family: Arial, sans-serif;
+		font-size: 16px;
+		text-align: center;
+		background-color: #f8d7da;
+		color: #721c24;
+		border: 1px solid #f5c6cb;
+		border-radius: 5px;
+	}
   </style>
 </head>
 <body>
@@ -75,7 +88,7 @@
 	
 		require_once ('../config.php');
 
-		$query = "SELECT gr_id, grade_name FROM grade ORDER BY grade_name";
+		$query = "SELECT gr_id, grade_name FROM grades ORDER BY grade_order";
 		
 		$results = mysqli_query($connect, $query);
 	
@@ -85,7 +98,15 @@
 		
 		
 	?>
-	
+	<?php 
+		session_start();
+		if(isset($_SESSION['error'])){  ?>
+		<div class="error">
+			<?php echo $_SESSION['error']; ?>
+		</div>
+			<?php unset($_SESSION['error']); 
+		}
+	?>
   <h2>Student Registration</h2>
   <form action="store.php" method="POST" enctype="multipart/form-data">
     <table>
