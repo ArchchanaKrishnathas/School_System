@@ -65,8 +65,8 @@
 		<tr class="sidebar">
 			<td width="10%" height="80%">
 			    <ul>
-                        <li><a href="index.php?section=students&page=index" >Students</a></li>
-                        <li><a href="index.php?section=subjects&page=index" >Subjects</a></li>
+                        <li><a href="index.php?section=student&page=index" >Students</a></li>
+                        <li><a href="index.php?section=subject&page=index" >Subjects</a></li>
                         <li><a href="index.php?section=grade&page=index" > Grades</a></li>
 						
 						<li><a href="auth/logout.php"> Logout</a></li>

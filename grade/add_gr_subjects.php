@@ -134,13 +134,6 @@
 					<input type="checkbox" id="subjects" name="subjects[]" value="<?php echo $subject['sub_id']; ?>" <?php if(in_array($subject['sub_id'],$selected_subjects)){echo "checked";} ?>>
 					<label><?php echo $subject['subject_name']; ?></label><br>
 				<?php endforeach; ?>
-					
-			
-			<!-- using while loop only -->
-			 <!-- <?php while ($subject = mysqli_fetch_assoc($result2)) { ?>
-					<input type="checkbox" id="subjects[]" name="subjects[]" value="<?php echo $subject['sub_id']; ?>">
-					<label><?php echo $subject['subject_name']; ?></label><br>
-			<?php } ?> -->
             </td>
 		</tr>
 		<tr> <td colspan="2" style="text-align: right;"> <input type="submit" value="Save" > </td></tr>

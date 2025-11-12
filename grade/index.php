@@ -12,8 +12,8 @@
 	
 	<h2>Grades Details</h2>
 
-	<div class="container">
-		<a href="index.php?section=grade&page=create" class="add-btn">+ Add Grade</a>
+	<div>
+		<a href="index.php?section=grade&page=create">+ Add Grade</a>
 	</div>
 	
 	<table border="1">
@@ -31,6 +31,7 @@
 				<td><?php echo $row["grade_group"]; ?></td>
 				<td> <input type="color" value="<?php echo $row["grade_color"]; ?>"></td>
 				<td><?php echo $row["grade_order"]; ?></td>
+															<!-- query string -->
 				<td> <a href="grade/delete.php?gr_id=<?php echo $row['gr_id'];?>" onclick="return confirm('Do you want to delete?')"> delete </a> </td>
 				<td> <a href="index.php?section=grade&page=edit&gr_id=<?php echo $row['gr_id'];?>"> edit </a> </td>
 				<td> <a href="index.php?section=grade&page=show&gr_id=<?php echo $row['gr_id'];?>"> show </a> </td>			

@@ -5,6 +5,4 @@
 		die ("connection Failure". mysqli_connect_error());
 	}
 	
-	//echo "Connected";
-	
 ?>

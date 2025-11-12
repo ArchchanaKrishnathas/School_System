@@ -3,10 +3,6 @@
 		$gr_id=$_POST["gr_id"];
 		$subjects=$_POST["subjects"];
 		
-		//echo var_dump($st_id);
-		//echo var_dump($subjects);
-	
-		
 		require_once('../config.php');
 		
 		$query= "DELETE FROM subject_grade WHERE gr_id=$gr_id";
