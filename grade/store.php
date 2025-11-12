@@ -1,5 +1,4 @@
 <?php
-	session_start();
 	
 	if($_SERVER["REQUEST_METHOD"]=="POST"){
 		$gr_name=$_POST["grade_name"];
@@ -13,10 +12,12 @@
 		$check_result= mysqli_query($connect,$check_query);
 		$rows_count=mysqli_num_rows($check_result);
 		
-		if($rows_count>0){
-			$_SESSION['error'] = "Grade already exists!";
-			header("location:create.php");
-			exit;
+		if($rows_count>0){  ?>
+		<script>
+			alert("Grade Already Exist!");
+			window.history.back();
+		</script>
+		<?php
 		} else {
 			$query="INSERT INTO grades(grade_name,grade_group,grade_color,grade_order) VALUES('$gr_name','$gr_group','$gr_color','$gr_order')";
 			
@@ -25,7 +26,7 @@
 			if(!$results){
 				echo mysqli_error($connect);
 			} else{
-				header("location:index.php");
+				header("location:../index.php?section=grade&page=index");
 			}
 		}
 	}

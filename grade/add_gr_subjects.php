@@ -1,87 +1,8 @@
-<html>
-<head>
-	<title> Student details </title>
-	<style>
-		body {
-		  font-family: Arial, sans-serif;
-		  background-color: #f2f2f2;
-		  padding: 40px;
-		}
-
-		h2 {
-		  color: #0066cc;
-		  text-align: center;
-		}
-
-		table {
-		  width: 50%;
-		  margin: 0 auto;
-		  border-collapse: collapse;
-		  background-color: white;
-		}
-
-		th, td {
-		  border: 1px solid #ccc;
-		  padding: 8px;
-		  text-align: left;
-		}
-
-		th {
-		  background-color: #e6f0ff;
-		}
-
-		.back {
-		  text-align: center;
-		  margin-top: 15px;
-		}
-	
-		a {
-		  color: #0066cc;
-		  text-decoration: none;
-		}
-
-		a:hover {
-		  text-decoration: underline;
-		}
-		
-		input[type="submit"] {
-			background-color: #ADD8E6;
-			cursor: pointer;
-			border:none;
-			border-radius:5px;
-		}
-
-		.back {
-			text-align: center;
-			margin-top: 15px;
-			}
-		
-		.back-btn {
-			display: inline-block;
-			background-color: #ADD8E6;
-			color: black;
-			padding: 8px 16px;
-			border-radius: 5px;
-			text-decoration: none;
-			font-weight: bold;
-			border: none;
-			cursor: pointer;
-			transition: background-color 0.2s ease;
-			}
-
-			.back-btn:hover {
-			background-color: #87CEEB;
-			}
-
-	  </style>
-</head>
-</head>
-<body>
 	<?php
 
 	$id= $_GET["gr_id"];
 	
-	require_once ('../config.php');
+	
 	
 	$query="SELECT * FROM grades where gr_id='$id' ";
 	
@@ -137,25 +58,34 @@
 		<tr>
 			<th>Subjects</th>
 		</tr>
-		 
+		 	<?php 
+			if(empty($sub_array)){   ?>
+				<tr> <td colspan="2"> <i> No Subjects Selected </i> </td> </tr>
 			<?php 
-			foreach($sub_array as $subject_id){
-				
-				$query= "SELECT * FROM subjects WHERE sub_id=$subject_id";
-				
-				$result4 = mysqli_query($connect, $query);
-		
-				if (!$result4) {
-					echo mysqli_error($connect);
-				}
-				
-				$row4 = mysqli_fetch_assoc($result4); ?>
+			} else{
+	
+				foreach($sub_array as $subject_id){
+					
+					$query= "SELECT * FROM subjects WHERE sub_id=$subject_id";
+					
+					$result4 = mysqli_query($connect, $query);
+			
+					if (!$result4) {
+						echo mysqli_error($connect);
+					}
+					
+					$row4 = mysqli_fetch_assoc($result4); ?>
 			<tr>
 			<td>	
 				<?php echo $row4["subject_name"]; ?>
-			</td> </tr>
+			</td> 
+			<td>
+				<a href="index.php?section=grade&page=delete_subject&gr_id=<?php echo $row['gr_id']; ?>&sub_id=<?php echo $row4['sub_id']; ?>" onclick="return confirm('Do you want to delete this subject?')">  Delete </a>	
+			</td>
+		</tr>
 			<?php
 			} 
+		}
 			?> 
 		</tr>
 	</table>
@@ -194,7 +124,7 @@
 
 	?>
 	<br>
-	<form action="subject_grade_store.php" method="post"> 
+	<form action="grade/subject_grade_store.php" method="post"> 
 	<input type="hidden" name="gr_id" value="<?php echo $id; ?>">
 	<table border="1">
 		<tr>
@@ -218,8 +148,6 @@
 	</form>
 
 	<div class="back">
-    	<a href="index.php" class="back-btn">← Back to Student List</a>
+    	<a href="index.php?section=grade&page=index">← Back to Grades List</a>
 	</div>
 
-</body>
-</html>

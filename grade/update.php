@@ -7,16 +7,28 @@
 	
 	require_once ('../config.php');
 		
-	$query="UPDATE grades SET grade_name= '$gr_name', grade_group='$gr_group',grade_color='$gr_color',grade_order='$gr_order' where gr_id=$id ";
+	$check_query= "SELECT grade_name FROM grades WHERE grade_name='$gr_name' ";
+	$check_result= mysqli_query($connect,$check_query);
+	$rows_count=mysqli_num_rows($check_result);
 		
-	$results = mysqli_query($connect,$query);
+	if($rows_count>0){  ?>
+		<script>
+			alert("Grade Already Exist!");
+			window.history.back();
+		</script>
+		<?php
+	} else {
+		$query="UPDATE grades SET grade_name= '$gr_name', grade_group='$gr_group',grade_color='$gr_color',grade_order='$gr_order' where gr_id=$id ";
 				
-		
-	if(!$results){
-		echo mysqli_error($connect);
-	}else{
-		echo "query Executed !!";
+		$results = mysqli_query($connect,$query);
+						
+				
+		if(!$results){
+			echo mysqli_error($connect);
+		}else{
+			header("location:../index.php?section=grade&page=index");
+		}
 	}
 	
-	header("location:index.php");
+	
 ?>

@@ -13,5 +13,5 @@
 		echo "query Executed !!";
 	}
 	
-	header("location:index.php");
+	header("location:../index.php?section=grade&page=index");
 ?>

@@ -11,13 +11,21 @@
 	//print_r($profile);
 	//$query = "DELETE image_path FROM students WHERE st_id='$st_id'  ";
 	
-	$query ="UPDATE students SET image_path = NULL WHERE st_id = $st_id";
-	$results = mysqli_query($connect, $query);
+	$check_img= "SELECT image_path 	FROM students WHERE st_id = $st_id";
+	$check_result= mysqli_query($connect, $check_img);
+	$row= mysqli_fetch_assoc($check_result);
 
-	if(!$results){
-		echo mysqli_error($connect);
-	}
-
+	$path= $row['image_path'];
 	
-	header("location:edit.php?st_id=$st_id");
+	if(file_exists($path)){
+		unlink($path);
+
+		$query ="UPDATE students SET image_path = NULL WHERE st_id = $st_id";
+		$results = mysqli_query($connect, $query);
+
+		header("location:edit.php?st_id=$st_id");
+	} else{
+		echo "Image not found!";
+	}
+	
 ?>

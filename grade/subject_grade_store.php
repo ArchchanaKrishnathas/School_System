@@ -17,8 +17,7 @@
 			$results = mysqli_query($connect,$query);
 		}
 				
-
 	}
 	
-	header("location:add_gr_subjects.php?gr_id=$gr_id"); 
+	header("location:../index.php?section=grade&page=add_gr_subjects&gr_id=$gr_id"); 
 ?>

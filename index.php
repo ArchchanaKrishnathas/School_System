@@ -65,15 +65,35 @@
 		<tr class="sidebar">
 			<td width="10%" height="80%">
 			    <ul>
-                        <li><a href="students" target="iframe_a">Students</a></li>
-                        <li><a href="subjects" target="iframe_a">Subjects</a></li>
-                        <li><a href="grade" target="iframe_a"> Grades</a></li>
+                        <li><a href="index.php?section=students&page=index" >Students</a></li>
+                        <li><a href="index.php?section=subjects&page=index" >Subjects</a></li>
+                        <li><a href="index.php?section=grade&page=index" > Grades</a></li>
 						
 						<li><a href="auth/logout.php"> Logout</a></li>
                 </ul>
 			</td>
 			<td width="90%" height="80%">
-				<iframe name="iframe_a" width="100%" height="100%"  title="school system iframe" style="border:none;" src="students/index.php"></iframe>
+				<?php 	
+					if(isset($_GET['section'])){
+						$section= $_GET['section'];
+					} else {
+						$section= "pages";
+					}
+					
+					if(isset($_GET['page'])){
+						$page= $_GET['page'];
+					}else{
+						$page= "index";
+					}
+						
+					$path= $section."/".$page.".php";
+					if(file_exists($path)){
+						include($path);
+					} else {
+						echo "<h1> 404 Page not found</h1>";
+					}
+						
+				?>
 			</td>
 		</tr>
 		<tr class="footer">
@@ -86,94 +106,3 @@
 
 
 
-
-<!--
-<html>
-<head>
-	<title>Home page</title>
-	<style>
-	* {
-	  box-sizing: border-box;
-	}
-
-	body {
-	  font-family: Arial, Helvetica, sans-serif;
-	}
-
-	/* Style the header */
-	header {
-	  background-color: #666;
-	  padding: 8px;
-	  text-align: center;
-	  font-size: 25px;
-	  color: white;
-	}
-
-	/* Create two columns/boxes that floats next to each other */
-	nav {
-	  float: left;
-	  width: 30%;
-	  height: 300px; /* only for demonstration, should be removed */
-	  background: #ccc;
-	  padding: 20px;
-	}
-
-	/* Style the list inside the menu */
-	nav ul {
-	  list-style-type: none;
-	  padding: 0;
-	}
-
-	.main {
-	  float: left;
-	  padding: 20px;
-	  width: 70%;
-	  background-color: #f1f1f1;
-	  height: 300px; /* only for demonstration, should be removed */
-	}
-
-	/* Clear floats after the columns */
-	section::after {
-	  content: "";
-	  display: table;
-	  clear: both;
-	}
-
-	/* Style the footer */
-	footer {
-	  background-color: #777;
-	  padding: 10px;
-	  text-align: center;
-	  color: white;
-	  margin-bottom: 10px;
-	}
-	</style>
-	</head>
-	<body>
-
-	<header>
-	  <h2>YarlIt</h2>
-	</header>
-
-	<section>
-	  <nav>
-		<ul>
-		  <li><a href="students">Students</a></li>
-		  <li><a href="grade">Grade</a></li>
-		  <li><a href="subjects">Subjects</a></li>
-		</ul>
-	  </nav>
-	  
-	  <div class="main">
-		
-	  </div>
-	</section>
-
-	<footer>
-	  <p>Footer</p>
-	</footer>
-
-	</body>
-</html>
-
--->
