@@ -77,7 +77,7 @@
 					if(isset($_GET['section'])){
 						$section= $_GET['section'];
 					} else {
-						$section= "pages";
+						$section= "student";
 					}
 					
 					if(isset($_GET['page'])){

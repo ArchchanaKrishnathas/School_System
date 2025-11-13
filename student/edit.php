@@ -1,7 +1,7 @@
 <?php	
 	$id= $_GET["st_id"];
 	
-	require_once ('../config.php');
+	require_once ('config.php');
 		
 	$query="SELECT * FROM students WHERE st_id='$id' ";
 	
@@ -13,90 +13,10 @@
 		
 	$row = mysqli_fetch_array($results);
 	
-	
-	
-	
-	
 ?>
 
-<html>
-<head>
-  <title>Edit Student detail </title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      padding: 40px;
-    }
-
-    h2 {
-      color: #0066cc;
-      text-align: center;
-    }
-
-    form {
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 20px;
-      width: 480px;
-      margin: 0 auto;
-    }
-
-    table {
-      width: 100%;
-    }
-
-	td, th {
-	  padding-top: 10px;  
-	}
-    label {
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="number"],
-	input[type="date"],
-    textarea {
-      width: 100%;
-      padding: 6px;
-      margin-top: 4px;
-      margin-bottom: 12px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-family: Arial, sans-serif;
-    }
-
-    textarea {
-      resize: vertical;
-      height: 60px;
-    }
-
-    .submit-container {
-      text-align: right;
-    }
-
-    input[type="submit"] {
-      background-color: #0066cc;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-      background-color: #004c99;
-    }
-	img{
-		border-radius:50%;
-	}
-  </style>
-</head>
-<body>
   <h2>Edit Student's Details</h2>
-  <form action="update.php" method="POST" enctype="multipart/form-data">
+  <form action="student/update.php" method="POST" enctype="multipart/form-data">
     <table>
 		<tr>
 			<td>
@@ -107,7 +27,7 @@
 			<?php 
 
 				if(empty($row["image_path"])){		
-					$path= "./uploads/default_img.jpg";
+					$path= "student/uploads/default_img.jpg";
 				} else{
 					$path= $row["image_path"];
 				}
@@ -204,5 +124,4 @@
       </tr>
     </table>
   </form>
-</body>
-</html>
+

@@ -35,5 +35,5 @@
 
 	}
 	
-	header("location:add_subject.php?st_id=$st_id"); 
+	header("location:../index.php?section=student&page=add_subject&st_id=$st_id"); 
 ?>

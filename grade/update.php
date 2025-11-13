@@ -14,7 +14,7 @@
 	if($rows_count>0){  ?>
 		<script>
 			alert("Grade Already Exist!");
-			window.history.back();
+			history.back();
 		</script>
 		<?php
 	} else {

@@ -19,5 +19,5 @@
 		echo "query Executed !!";
 	}
 	
-	header("location:index.php");
+	header("location:../index.php?section=subject&page=index");
 ?>
