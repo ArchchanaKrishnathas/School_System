@@ -6,14 +6,11 @@
 	
 	//$query = "SELECT students.*,grades.grade_name FROM students INNER JOIN grades ON students.grade_id = grades.gr_id";
 	   // Soft Delete
-	$query = "SELECT students.*, grades.grade_name 
-	FROM students 
-	INNER JOIN grades ON students.grade_id = grades.gr_id 
-	WHERE students.deleted_at IS NULL";
+	$query = "SELECT students.*, grades.grade_name FROM students INNER JOIN grades ON students.grade_id = grades.gr_id WHERE students.deleted_at IS NULL";
 	
 	$results = mysqli_query($connect, $query);
 	
-	if (!$results) {
+	if (!$results) { 
 		echo mysqli_error($connect);
 	}
 	
@@ -45,7 +42,7 @@
 			if(empty($row["image_path"])){		
 				$path= "student/uploads/default_img.jpg";
 			} else{
-				$path= $row["image_path"];
+				$path= "student/".$row["image_path"];
 			}
 		?>   
 			<tr>
@@ -59,7 +56,7 @@
 				<td><?php echo $row["gender"]; ?></td>
 				<td><?php echo $row["telephone_no"]; ?></td>
 				<td><?php echo $row["address"]; ?></td>
-				<td><a href="delete.php?st_id=<?php echo $row['st_id'];?>" onclick="return confirm('Do you want to delete?')"> delete</a></td>
+				<td><a href="student/delete.php?st_id=<?php echo $row['st_id'];?>" onclick="return confirm('Do you want to delete?')"> delete</a></td>
 				<td><a href="index.php?section=student&page=edit&st_id=<?php echo $row['st_id'];?>"> edit </a></td>
 				<td><a href="index.php?section=student&page=show&st_id=<?php echo $row['st_id'];?>"> show </a></td>
 				<td><a href="index.php?section=student&page=add_subject&st_id=<?php echo $row['st_id'];?>"> Add Subject </a> </td>

@@ -15,7 +15,7 @@
 	$check_result= mysqli_query($connect, $check_img);
 	$row= mysqli_fetch_assoc($check_result);
 
-	$path= $row['image_path'];
+	$path= "../student/".$row['image_path'];
 	
 	if(file_exists($path)){
 		unlink($path);
@@ -23,7 +23,7 @@
 		$query ="UPDATE students SET image_path = NULL WHERE st_id = $st_id";
 		$results = mysqli_query($connect, $query);
 
-		header("location:edit.php?st_id=$st_id");
+		header("location:../index.php?section=student&page=edit&st_id=$st_id");
 	} else{
 		echo "Image not found!";
 	}

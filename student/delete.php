@@ -6,9 +6,7 @@
 	//$query="DELETE FROM students WHERE st_id='$id' ";
 	
 	 // Soft Delete
-	$query="UPDATE students
-	SET deleted_at = NOW()
-	WHERE st_id = $id; ";
+	$query="UPDATE students SET deleted_at = NOW() WHERE st_id = $id ";
 
 	
 	$results = mysqli_query($connect,$query);
@@ -16,9 +14,9 @@
 	if(!$results){
 		echo mysqli_error($connect);
 	}else{
-		echo "query Executed !!";
+		header("location:../index.php?section=student&page=index");
 	}
-	header("location:index.php");
+	
 
 ?>
 

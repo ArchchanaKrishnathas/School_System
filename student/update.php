@@ -12,11 +12,38 @@
 	$gender=$_POST["gender"];
 	$tel_no=$_POST["telephone_no"];
 	$address=$_POST["address"];
+	
+	$check_query= "SELECT admission_no,nic_no FROM students WHERE (admission_no='$admission_no' OR nic_no='$nic_no') AND st_id !='$id' ";
+	$check_result= mysqli_query($connect,$check_query);
+	$rows_count=mysqli_num_rows($check_result);
 		
-	if($_FILES["student_image"]['error'] !== UPLOAD_ERR_NO_FILE){
-		$target_dir="uploads/";
+		if ($rows_count > 0) {
+			$row = mysqli_fetch_assoc($check_result); 
+			
+			if ($row['admission_no'] == $admission_no && $row['nic_no'] == $nic_no) { ?>
+				<script>
+					alert(	"Admission number & NIC number already exist!");
+					window.history.back();
+		    	</script>  
+			<?php
+			} elseif ($row['admission_no'] == $admission_no) { ?>
+				<script>
+					alert("Admission number already exists!");
+					window.history.back();
+		    	</script> 
+			<?php	
+			} elseif ($row['nic_no'] == $nic_no) { ?>
+				<script>
+					alert("NIC number already exists!");
+					window.history.back();
+		    	</script>  
+			<?php 
+			}
+
+		}else if($_FILES["student_image"]['error'] !== UPLOAD_ERR_NO_FILE){
+		$target_dir="../student/uploads/";
 		$target_file=$target_dir.basename($_FILES["student_image"]["name"]);
-		//$original_file_name= basename($_FILES["student_image"]["name"]);
+		$original_file_name= basename($_FILES["student_image"]["name"]);
 			
 		$img_file_type= strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
@@ -33,7 +60,7 @@
 				if(!$results){
 					echo mysqli_error($connect);
 				} else{
-					header("location:index.php");
+					header("location:../index.php?section=student&page=index");
 				}
 			}
 			else {

@@ -33,7 +33,7 @@
 				<td><?php echo $row["subject_order"]; ?></td>
 				<td> <input type="color" value="<?php echo $row["subject_color"]; ?>"></td>
 				<td><?php echo $row["subject_no"]; ?></td>
-				<td> <a href="delete.php?sub_id=<?php echo $row['sub_id'];?>" onclick="return confirm('Do you want to delete?')"> delete </a> </td>
+				<td> <a href="subject/delete.php?sub_id=<?php echo $row['sub_id'];?>" onclick="return confirm('Do you want to delete?')"> delete </a> </td>
 				<td> <a href="index.php?section=subject&page=edit&sub_id=<?php echo $row['sub_id'];?>"> edit </a> </td>
 				<td> <a href="index.php?section=subject&page=show&sub_id=<?php echo $row['sub_id'];?>"> show </a> </td>
 			</tr>

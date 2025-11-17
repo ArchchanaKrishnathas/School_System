@@ -29,7 +29,7 @@
 				if(empty($row["image_path"])){		
 					$path= "student/uploads/default_img.jpg";
 				} else{
-					$path= $row["image_path"];
+					$path= "student/".$row["image_path"];
 				}
 			?>
 			<td colspan="2" style="text-align: center"><img src="<?php echo $path; ?>" alt="profile pic" height="180px" width="180px" ></td>
@@ -40,7 +40,7 @@
 				 <input type="file" id="student_image" name="student_image" accept="Image/* "> 
 			
 		
-				 <a href="delete_profile.php?st_id=<?php echo $id; ?>" onclick="return confirm('Do you want to delete this profile?')" style="color:red">  delete profile</a>    <br>
+				 <a href="student/delete_profile.php?st_id=<?php echo $id; ?>" onclick="return confirm('Do you want to delete this profile?')" style="color:red">  delete profile</a>    <br>
 			</td>
 		</tr>
 		<tr>

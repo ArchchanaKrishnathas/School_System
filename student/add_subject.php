@@ -29,7 +29,7 @@
 				if(empty($row["image_path"])){		
 					$path= "student/uploads/default_img.jpg";
 				} else{
-					$path= $row["image_path"];
+					$path= "student/".$row["image_path"];
 				}
 			?>
 			<td colspan="2" style="text-align: center"> <img src="<?php echo $path; ?>" alt="" height="200px" width="200px" > </td>
@@ -94,14 +94,12 @@
 		//echo var_dump($sub_array);    
 	?>
 	
-	
 	<br>
 	
 	<table border="1">
 		<tr>
 			<th colspan="2">Subjects</th>
 		</tr>
-		 
 			<?php 
 			if(empty($sub_array)){   ?>
 				<tr> <td colspan="2"> <i> No Subjects Selected </i> </td> </tr>
@@ -120,7 +118,7 @@
 				<?php echo $row4["subject_name"]; ?>
 			</td> 
 			<td>
-				<a href="delete_subject.php?st_id=<?php echo $row['st_id']; ?>&sub_id=<?php echo $row4['sub_id']; ?>" onclick="return confirm('Do you want to delete this subject?')">  Delete </a>	
+				<a href="student/delete_subject.php?st_id=<?php echo $row['st_id']; ?>&sub_id=<?php echo $row4['sub_id']; ?>" onclick="return confirm('Do you want to delete this subject?')">  Delete </a>	
 			</td>
 
 			</tr>
@@ -191,5 +189,5 @@
 	</form>
 
 	<div class="back">
-    	<a href="index.php" class="back-btn">← Back to Student List</a>
+    	<a href="index.php?section=student&page=index" class="back-btn">← Back to Student List</a>
 	</div>

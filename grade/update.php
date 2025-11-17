@@ -7,7 +7,7 @@
 	
 	require_once ('../config.php');
 		
-	$check_query= "SELECT grade_name FROM grades WHERE grade_name='$gr_name' ";
+	$check_query= "SELECT grade_name FROM grades WHERE grade_name='$gr_name' AND gr_id !='$id'";
 	$check_result= mysqli_query($connect,$check_query);
 	$rows_count=mysqli_num_rows($check_result);
 		

@@ -19,56 +19,64 @@
 		if ($rows_count > 0) {
 			$row = mysqli_fetch_assoc($check_result); 
 			
-			// if ($row['admission_no'] == $admission_no && $row['nic_no'] == $nic_no) {
-			// 	$_SESSION['error'] = "Admission number & NIC number already exist!";
-			// } elseif ($row['admission_no'] == $admission_no) {
-			// 	$_SESSION['error'] = "Admission number already exists!";
-			// } elseif ($row['nic_no'] == $nic_no) {
-			// 	$_SESSION['error'] = "NIC number already exists!";
-			// }
-			// header("Location: create.php");
-			// exit; ?>
-			<script>
-				alert("Student Already Exist!");
-				window.history.back();
-		    </script>  
-		<?php
-		} else if(isset($_FILES["student_image"])){	
-			$target_dir="uploads/";
-			$target_file=$target_dir.basename($_FILES["student_image"]["name"]);
-			//$original_file_name= basename($_FILES["student_image"]["name"]);
-			
-			$img_file_type= strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-			$allowed_file_types= ['jpg','jpeg','png','gif'];
-			$size = $_FILES["student_image"]["size"];
-
-			if(in_array($img_file_type,$allowed_file_types)){
-				if(move_uploaded_file($_FILES["student_image"]["tmp_name"],$target_file)){
+			if ($row['admission_no'] == $admission_no && $row['nic_no'] == $nic_no) { ?>
+				<script>
+					alert(	"Admission number & NIC number already exist!");
+					window.history.back();
+		    	</script>  
+			<?php
+			} elseif ($row['admission_no'] == $admission_no) { ?>
+				<script>
+					alert("Admission number already exists!");
+					window.history.back();
+		    	</script> 
+			<?php	
+			} elseif ($row['nic_no'] == $nic_no) { ?>
+				<script>
+					alert("NIC number already exists!");
+					window.history.back();
+		    	</script>  
+			<?php 
+			}	
+		} 
+		
+		else {
+			if($_FILES["student_image"]['error'] !== UPLOAD_ERR_NO_FILE) {	
+				$target_dir="../student/uploads/";
+				$target_file=$target_dir.basename($_FILES["student_image"]["name"]);
+				$original_file_name= basename($_FILES["student_image"]["name"]);
 				
-					$query="INSERT INTO students(father_name,student_name,admission_no,grade_id,nic_no,date_of_birth,gender,telephone_no,address,image_path) VALUES('$fname','$st_name','$admission_no',$grade_id,'$nic_no','$dob','$gender','$tel_no','$address','$target_file')";
+				$img_file_type= strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+				$allowed_file_types= ['jpg','jpeg','png','gif'];
+				$size = $_FILES["student_image"]["size"];
+
+				if(in_array($img_file_type,$allowed_file_types)){
+					if(move_uploaded_file($_FILES["student_image"]["tmp_name"],$target_file)){
 					
-					$results = mysqli_query($connect,$query);
-							
-					if(!$results){
-						echo mysqli_error($connect);
+						$query="INSERT INTO students(father_name,student_name,admission_no,grade_id,nic_no,date_of_birth,gender,telephone_no,address,image_path) VALUES('$fname','$st_name','$admission_no',$grade_id,'$nic_no','$dob','$gender','$tel_no','$address','$target_file')";
+						$results = mysqli_query($connect,$query);
+								
+						if($results){
+							header("location:../index.php?section=student&page=index");
+						}
+					} else {
+						echo "Image Not Uploaded in folder";
 					}
-				}
-				else {
-					echo "Image upload failed!";
+				} else {
+					//echo "Only JPG, JPEG, PNG & GIF files are allowed.";
 				}
 			} else {
-				// echo "Only JPG, JPEG, PNG & GIF files are allowed.";
-				$query="INSERT INTO students(father_name,student_name,admission_no,grade_id,nic_no,date_of_birth,gender,telephone_no,address) VALUES('$fname','$st_name','$admission_no',$grade_id,'$nic_no','$dob','$gender','$tel_no','$address')";
-					
-				$results = mysqli_query($connect,$query);
-									
-				if(!$results){
-					echo mysqli_error($connect);
-				}
+					$query="INSERT INTO students(father_name,student_name,admission_no,grade_id,nic_no,date_of_birth,gender,telephone_no,address) VALUES('$fname','$st_name','$admission_no',$grade_id,'$nic_no','$dob','$gender','$tel_no','$address')";
+						
+					$results = mysqli_query($connect,$query);
+										
+					if($results){
+						header("location:../index.php?section=student&page=index");
 					}
-				}
 			}
+		}
 
-	header("location:../index.php?section=student&page=index");
+	}
 ?>
+

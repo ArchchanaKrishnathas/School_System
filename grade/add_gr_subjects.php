@@ -2,8 +2,8 @@
 
 	$id= $_GET["gr_id"];
 	
-	
-	
+	require_once('config.php');
+
 	$query="SELECT * FROM grades where gr_id='$id' ";
 	
 	$results = mysqli_query($connect, $query);

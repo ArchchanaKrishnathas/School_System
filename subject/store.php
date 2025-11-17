@@ -9,7 +9,7 @@
 		
 		require_once('../config.php');
 		
-		$check_query= "SELECT subject_name,subject_index FROM subjects WHERE subject_name='$sub_name' AND subject_index='$sub_index' ";
+		$check_query= "SELECT subject_name,subject_index FROM subjects WHERE subject_name='$sub_name' OR subject_index='$sub_index' ";
 		$check_result= mysqli_query($connect,$check_query);
 		$rows_count=mysqli_num_rows($check_result);
 

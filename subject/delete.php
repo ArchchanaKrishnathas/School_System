@@ -10,8 +10,7 @@
 	if(!$results){
 		echo mysqli_error($connect);
 	}else{
-		echo "query Executed !!";
+		header("location:../index.php?section=subject&page=index");
 	}
 	
-	header("location:index.php");
 ?>

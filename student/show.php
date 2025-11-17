@@ -34,7 +34,7 @@
 				if(empty($row["image_path"])){		
 					$path= "student/uploads/default_img.jpg";
 				} else{
-					$path= $row["image_path"];
+					$path= "student/".$row["image_path"];
 				}
 			?>
 			<td colspan="2" style="text-align: center"> <img src="<?php echo $path; ?>" alt="" height="200px" width="200px" > </td>
@@ -81,6 +81,21 @@
 		<tr>
 			<th>Address</th>
 			<td> <?php echo $row["address"]; ?></td>
+		</tr>
+		<tr>
+			<th>Subjects</th>
+			<?php 
+				// Subjects from student_subject table
+				$query_sub= "SELECT sub_id FROM student_subject WHERE st_id='$id' ";
+				$result_sub= mysqli_query($connect, $query_sub);
+				while($row_sub= mysqli_fetch_assoc($result_sub)){
+					$sub_id=$row_sub["sub_id"];
+					$query= "SELECT subject_name FROM subjects WHERE sub_id=$sub_id";
+					$result1= mysqli_query($connect,$query);
+					$row1= mysqli_fetch_assoc($result1);
+			?>
+				<td> <?php echo $row1["subject_name"]; ?></td>  <br>
+			<?php } ?>
 		</tr>	
 	</table>
 	
