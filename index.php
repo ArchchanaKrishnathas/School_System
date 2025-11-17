@@ -1,29 +1,60 @@
 <html>
 <head>
 	<title> Home Page </title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+	<style>
+		body{
+			display: flex;
+		}
+
+		.sidebar{
+			width: 250px;
+			background-color:	#4d6d8b;
+			position:relative;
+		}
+
+		.sidebar h3{
+			color:	#27333fff;
+		}
+		.nav-link{
+			color: #fff !important;
+		}
+		.header{
+			background-color: #ecf3faff;
+		}
+
+		.logout-btn{
+			position:absolute;
+			bottom:10px;
+			left:40px;
+			margin:10px 20px;
+			padding:0;
+		}
+	</style>
 </head>
 <body>
 		<?php 
 			include('auth/auth_check.php');
 		?>
 		
-		<table border="1" height="100%" width="100%">
-        <tr class="header">
-			<td colspan="2" width="100%" height="10%"><h2> School System</h2></td>
-		</tr>
-		<tr class="sidebar">
-			<td width="10%" height="80%">
-			    <ul>
-                        <li><a href="index.php?section=student&page=index" >Students</a></li>
-                        <li><a href="index.php?section=subject&page=index" >Subjects</a></li>
-                        <li><a href="index.php?section=grade&page=index" > Grades</a></li>
+		<div class="sidebar">
+			<h3 class="ml-4 my-3"> School System</h3>
+			<ul class="nav flex-column">
+				<li class="nav-item mx-auto"> <a href="index.php?section=student&page=index" class="nav-link">  Students</a></li>
+				<li class="nav-item mx-auto"> <a href="index.php?section=subject&page=index" class="nav-link" > Subjects</a></li>
+				<li class="nav-item mx-auto"> <a href="index.php?section=grade&page=index" class="nav-link"> Grades</a></li>
 						
-						<li><a href="auth/logout.php"> Logout</a></li>
-                </ul>
-			</td>
-			<td width="90%" height="80%">
-				<?php 	
+            </ul>
+			<button class="logout-btn btn btn-warning"> <a href="auth/logout.php" class="nav-link"> <i class="bi bi-box-arrow-left"></i> Logout</a></button>
+		</div>
+
+		<div class="main-content w-100">
+			<div class="header">
+				<h2 class="mx-2">Dashboard</h2>
+			</div>
+
+			<?php 	
 					if(isset($_GET['section'])){
 						$section= $_GET['section'];
 					} else {
@@ -44,18 +75,11 @@
 					}
 						
 				?>
-			</td>
-		</tr>
-		<tr class="footer">
-			<td colspan="2" width="100%" height="10%">Footer</td>
-		</tr>
-		</table>
+		</div>
+		
 
 
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</body>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
 
 
