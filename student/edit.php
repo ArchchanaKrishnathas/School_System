@@ -36,7 +36,7 @@
 		<tr>
 		 <tr>
 			<td>
-				 <label for="student_image">Edit profile</label>
+				 <label for="student_image">Edit profile</label> 
 				 <input type="file" id="student_image" name="student_image" accept="Image/* "> 
 			
 		

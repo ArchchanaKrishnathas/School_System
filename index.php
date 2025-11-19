@@ -31,6 +31,14 @@
 			margin:10px 20px;
 			padding:0;
 		}
+
+		img{
+			border-radius:50%;
+		}
+
+		.content{
+			background-color: #eeeff1ff;
+		}
 	</style>
 </head>
 <body>
@@ -49,9 +57,9 @@
 			<button class="logout-btn btn btn-warning"> <a href="auth/logout.php" class="nav-link"> <i class="bi bi-box-arrow-left"></i> Logout</a></button>
 		</div>
 
-		<div class="main-content w-100">
+		<div class="main-content w-100 content">
 			<div class="header">
-				<h2 class="mx-2">Dashboard</h2>
+				<h3 class="mx-2">Student Dashboard</h3>
 			</div>
 
 			<?php 	
@@ -77,7 +85,6 @@
 				?>
 		</div>
 		
-
 
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>

@@ -1,3 +1,13 @@
+<style>
+	body{
+		background-color: #eeeff1ff;
+	}
+	.card-header{
+		background-color: #1f4e7a !important;
+		color: #fff;
+	}
+</style>
+
 <?php	
 	$id= $_GET["gr_id"];
 	
@@ -16,36 +26,44 @@
 
 	?>
 
-  <h2>Edit Grade Details</h2>
-  <form action="grade/update.php" method="POST" >
-    <table border="1" >
-		<tr>
-			<td colspan="2">
+
+<div class="container d-flex justify-content-center mt-5">
+	<div class="card shadow mb-5 bg-body rounded" style="width: 25rem;">
+	<div class="card-header">
+    	<h4 class="text-center">Edit Grade Details </h4>
+	</div>
+	<div class="card-body">
+		<form action="grade/update.php" method="POST" >
+			<div class="col-auto">
 				<input type="hidden" id="gr_id" name="gr_id" value="<?php echo $id ?>" >
-			</td>
-		</tr>
-		<tr>
-			<td> <label for="grade_name">Grade name</label> 	</td>
-			<td> <input type="text" id="grade_name" name="grade_name" value="<?php echo $row["grade_name"]; ?>"> </td>
-		</tr>
-		<tr>
-			<td> <label for="grade_group">Grade group</label> </td>
-			<td>	<input type="text" id="grade_group" name="grade_group" value="<?php echo $row["grade_group"]; ?>"> </td>
-			</td>
-		</tr>
-		<tr>
-			<td><label for="grade_color">Grade color</label><br> </td>
-				<td><input type="color" id="grade_color" name="grade_color" value="<?php echo $row["grade_color"]; ?>"> </td>		
-      </tr>
-	  <tr>
-			<td> <label for="grade_order">Grade order</label> </td>
-			<td>	<input type="number" id="grade_order" name="grade_order" step="any" value="<?php echo $row["grade_order"]; ?>"> </td>	 
-    </tr>
-    <tr>
-			<td colspan="2">
-			  <input type="submit" value="Update">
-			</td>
-    </tr>
-    </table>
-  </form>
+			</div>
+			<div class="col-auto">
+				<label for="grade_name" class="form-label">Grade name</label> 	
+				<input type="text" id="grade_name" name="grade_name" value="<?php echo $row["grade_name"]; ?>" class="form-control">
+			</div>
+			<div class="col-auto">
+				<label for="grade_group" class="form-label">Grade group</label>
+			  	<input type="text" id="grade_group" name="grade_group" value="<?php echo $row["grade_group"]; ?>" class="form-control"> 
+			</div>
+			<div class="col-auto">
+				<label for="grade_color" class="form-label">Grade color</label><br>  
+				<input type="color" id="grade_color" name="grade_color" value="<?php echo $row["grade_color"]; ?>" class="form-control">  	
+			</div>
+			<div class="col-auto"></div>
+				<label for="grade_order" class="form-label">Grade order</label>  
+				<input type="number" id="grade_order" name="grade_order" step="any" value="<?php echo $row["grade_order"]; ?>" class="form-control">  
+			</div>
+			<div class="col-auto  text-center mb-3">
+				<input type="submit" value="Update" class="btn btn-success px-4 py-1">
+			</div>
+		</form>
+		</div>
+	</div>
+
+</div>
+
+
+
+  
+
 

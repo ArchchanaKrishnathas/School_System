@@ -52,7 +52,6 @@
 
 		if(in_array($img_file_type,$allowed_file_types)){
 			if(move_uploaded_file($_FILES["student_image"]["tmp_name"],$target_file)){
-				
 				$query="UPDATE students SET father_name= '$fname', student_name='$st_name',admission_no='$admission_no',grade_id='$grade_id',nic_no='$nic_no',date_of_birth='$dob',gender='$gender',telephone_no='$tel_no',address='$address',image_path='$target_file' WHERE st_id=$id ";
 			
 				$results = mysqli_query($connect,$query);

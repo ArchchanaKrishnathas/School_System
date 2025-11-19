@@ -26,7 +26,7 @@
 	<table class="table table-striped table-hover">
 		<thead>
 			<tr class="student-row">
-				<th colspan="16" class="text-center">
+				<th colspan="16" class="text-center fs-4">
 					Students Details
 					<a href="index.php?section=student&page=create" class="btn btn-primary float-end"> <i class="bi bi-person-plus"></i> Add New Student</a>
 				</th>
@@ -43,7 +43,7 @@
 				<th>Gender</th>
 				<th>Telephone No</th>
 				<th>Address</th>
-				<th colspan="4" style="text-align:center">Action</th>
+				<th colspan="4" class="text-center">Action</th>
 			</tr>
 		</thead>
 		<tbody>
