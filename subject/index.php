@@ -24,7 +24,7 @@
 			<tr class="subject-row">
 				<th colspan="8" class="text-center fs-4">
 					Subject Details
-					<a href="index.php?section=subject&page=create" class="btn btn-primary float-end">+ Add Subject</a>
+					<a href="index.php?section=subject&page=create" class="btn btn-primary float-end"><i class="bi bi-plus-circle"></i> Add Subject</a>
 				</th>
 			</tr>
 			<tr>
@@ -46,8 +46,8 @@
 					<td> <input type="color" value="<?php echo $row["subject_color"]; ?>"></td>
 					<td><?php echo $row["subject_no"]; ?></td>
 					<td> <a href="index.php?section=subject&page=edit&sub_id=<?php echo $row['sub_id'];?>" class="btn btn-warning"> edit </a> </td>
-					<td> <a href="subject/delete.php?sub_id=<?php echo $row['sub_id'];?>" onclick="return confirm('Do you want to delete?')" class="btn btn-danger"> delete </a> </td>
-					<td> <a href="index.php?section=subject&page=show&sub_id=<?php echo $row['sub_id'];?>" class="btn btn-info"> show </a> </td>
+					<td class="me-0"> <a href="subject/delete.php?sub_id=<?php echo $row['sub_id'];?>" onclick="return confirm('Do you want to delete?')" class="btn btn-danger"> delete </a> </td>
+					<td class="me-0" abbr=""> <a href="index.php?section=subject&page=show&sub_id=<?php echo $row['sub_id'];?>" class="btn btn-info"> show </a> </td>
 				</tr>
 			<?php } ?>
 		</tbody>		

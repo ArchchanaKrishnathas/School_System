@@ -39,6 +39,10 @@
 		.content{
 			background-color: #eeeff1ff;
 		}
+
+		.nav-item:hover{
+			background-color: #4d6d8b;
+		}
 	</style>
 </head>
 <body>
@@ -54,7 +58,7 @@
 				<li class="nav-item mx-auto"> <a href="index.php?section=grade&page=index" class="nav-link"> Grades</a></li>
 						
             </ul>
-			<button class="logout-btn btn btn-warning"> <a href="auth/logout.php" class="nav-link"> <i class="bi bi-box-arrow-left"></i> Logout</a></button>
+			<button class="logout-btn btn btn-danger"> <a href="auth/logout.php" class="nav-link"> <i class="bi bi-box-arrow-left"></i> Logout</a></button>
 		</div>
 
 		<div class="main-content w-100 content">

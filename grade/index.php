@@ -23,7 +23,7 @@
 		<tr class="grade-row">
 			<th colspan="8" class="fs-4">
 				Grades Details
-				<a href="index.php?section=grade&page=create"  class="btn btn-primary float-end">+ Add Grade</a>
+				<a href="index.php?section=grade&page=create"  class="btn btn-primary float-end">  <i class="bi bi-plus-circle me-1"></i> Add Grade</a>
 			</th>
 		</tr>
 		<tr>
@@ -44,10 +44,10 @@
 				<td><?php echo $row["grade_order"]; ?></td>
 															<!-- query string -->
 											 
-				<td> <a href="grade/delete.php?gr_id=<?php echo $row['gr_id'];?>" onclick="return confirm('Do you want to delete?')"  class="btn btn-danger"> delete </a> 
-				 <a href="index.php?section=grade&page=edit&gr_id=<?php echo $row['gr_id'];?>"  class="btn btn-warning"> edit </a> 
-				 <a href="index.php?section=grade&page=show&gr_id=<?php echo $row['gr_id'];?>"  class="btn btn-info"> show </a> 			
-				 <a href="index.php?section=grade&page=add_gr_subjects&gr_id=<?php echo $row['gr_id'];?>"  class="btn btn-success"> +Subjects </a> </td>
+				<td> <a href="grade/delete.php?gr_id=<?php echo $row['gr_id'];?>" onclick="return confirm('Do you want to delete?')"  class="btn btn-danger me-2"> delete </a> 
+				 <a href="index.php?section=grade&page=edit&gr_id=<?php echo $row['gr_id'];?>"  class="btn btn-warning me-2"> edit </a> 
+				 <a href="index.php?section=grade&page=show&gr_id=<?php echo $row['gr_id'];?>"  class="btn btn-info me-2"> show </a> 			
+				 <a href="index.php?section=grade&page=add_gr_subjects&gr_id=<?php echo $row['gr_id'];?>"  class="btn btn-success me-2"> +Subjects </a> </td>
 				
 			</tr>
 		<?php } ?>
