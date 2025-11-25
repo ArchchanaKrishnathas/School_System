@@ -11,7 +11,7 @@
 		}		
 	?>
 	
-	<style>
+<style>
 	.card-header{
 		background-color: #1f4e7a !important;
 		color: #fff;
@@ -60,12 +60,12 @@
 			<div class="col-auto">
 				<label for="gender" class="form-label">Gender</label> <br>
 				<div class="form-check form-check-inline">
-					<input type="radio" id="male" name="gender" value="male" form-check-input>
-					<label for="male" style="display:inline;" class="form-check-label">Male</label>
+					<input type="radio" id="male" name="gender" value="male" class="form-check-input">
+					<label for="male" class="form-check-label">Male</label>
 				</div>
 				<div class="form-check form-check-inline">
-					<input type="radio" id="female" name="gender" value="female" form-check-input>               
-                <label for="female" style="display:inline;" class="form-check-label">Female</label>
+					<input type="radio" id="female" name="gender" value="female" class="form-check-input">               
+                <label for="female" class="form-check-label">Female</label>
 				</div> 		
 			</div>
 			<div class="col-auto">

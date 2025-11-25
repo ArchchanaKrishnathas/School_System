@@ -1,3 +1,11 @@
+<style>
+	.card-header{
+		background-color: #1f4e7a !important;
+		color: #fff;
+	}
+	
+</style>
+
 	<?php
 
 	$id= $_GET["st_id"];
@@ -22,61 +30,66 @@
 	
 	?>
 	
-	<h2> <?php echo $row["student_name"]?> 's Details </h2>
-	<table border="1">
-		<tr>
-			<?php 
-				if(empty($row["image_path"])){		
-					$path= "student/uploads/default_img.jpg";
-				} else{
-					$path= "student/".$row["image_path"];
-				}
-			?>
-			<td colspan="2" style="text-align: center"> <img src="<?php echo $path; ?>" alt="" height="200px" width="200px" > </td>
-		</tr>
-		<tr>
-			<th>Father Name</th>
-			<td> <?php echo $row["father_name"]; ?> </td>
-		</tr>
-		<tr>
-			<th>Student Name</th>
-			<td> <?php echo $row["student_name"]; ?></td>
-		</tr>
-		<tr>
-			<th>Admission No </th>
-			<td> <?php echo $row["admission_no"]; ?></td>
-		</tr>
-		<tr>
-			<th>Grade </th>
-			<!-- <td> <?php echo $row["grade_id"]; ?></td>  -->
-			<td> <?php while ($row2 = mysqli_fetch_array($result2)) { 
-						if($row2["gr_id"]==$row["grade_id"]){echo $row2["grade_name"];}
-				}
-				?>
-			</td> 
-			<!--  <td> <?php echo $row["grade_name"]; ?> </td>  -->
-		</tr>
-		<tr>
-			<th>NIC No</th>
-			<td> <?php echo $row["nic_no"]; ?></td>
-		</tr>	
-		<tr>
-			<th>Date of Birth</th>
-			<td> <?php echo $row["date_of_birth"]; ?></td>
-		</tr>	
-		<tr>
-			<th>Gender</th>
-			<td> <?php echo $row["gender"]; ?></td>
-		</tr>	
-		<tr>
-			<th>Telephone No</th>
-			<td> <?php echo $row["telephone_no"]; ?></td>
-		</tr>	
-		<tr>
-			<th>Address</th>
-			<td> <?php echo $row["address"]; ?></td>
-		</tr>	
-	</table>
+	<div class="container d-flex justify-content-center mt-5">
+		<div class="card shadow mb-5 bg-body rounded" style="width: 32rem;">
+			<div class="card-header">
+				<h3 class="text-center"> <?php echo $row["student_name"]?> 's Details  </h3>
+			</div>
+			<div class="card-body">
+				<table class="table table-striped table-hover text-center">
+				<tr>
+					<?php 
+						if(empty($row["image_path"])){		
+							$path= "student/uploads/default_img.jpg";
+						} else{
+							$path= "student/".$row["image_path"];
+						}
+					?>
+					<td colspan="2" style="text-align: center"> <img src="<?php echo $path; ?>" alt="" height="200px" width="200px" > </td>
+				</tr>
+				<tr>
+					<th>Father Name</th>
+					<td> <?php echo $row["father_name"]; ?> </td>
+				</tr>
+				<tr>
+					<th>Student Name</th>
+					<td> <?php echo $row["student_name"]; ?></td>
+				</tr>
+				<tr>
+					<th>Admission No </th>
+					<td> <?php echo $row["admission_no"]; ?></td>
+				</tr>
+				<tr>
+					<th>Grade </th>
+					<!-- <td> <?php echo $row["grade_id"]; ?></td>  -->
+					<td> <?php while ($row2 = mysqli_fetch_array($result2)) { 
+								if($row2["gr_id"]==$row["grade_id"]){echo $row2["grade_name"];}
+						}
+						?>
+					</td> 
+					<!--  <td> <?php echo $row["grade_name"]; ?> </td>  -->
+				</tr>
+				<tr>
+					<th>NIC No</th>
+					<td> <?php echo $row["nic_no"]; ?></td>
+				</tr>	
+				<tr>
+					<th>Date of Birth</th>
+					<td> <?php echo $row["date_of_birth"]; ?></td>
+				</tr>	
+				<tr>
+					<th>Gender</th>
+					<td> <?php echo $row["gender"]; ?></td>
+				</tr>	
+				<tr>
+					<th>Telephone No</th>
+					<td> <?php echo $row["telephone_no"]; ?></td>
+				</tr>	
+				<tr>
+					<th>Address</th>
+					<td> <?php echo $row["address"]; ?></td>
+				</tr>	
+			</table>
 	
 	
 	
@@ -94,39 +107,38 @@
 		//echo var_dump($sub_array);    
 	?>
 	
-	<br>
 	
-	<table border="1">
-		<tr>
-			<th colspan="2">Subjects</th>
-		</tr>
-			<?php 
-			if(empty($sub_array)){   ?>
-				<tr> <td colspan="2"> <i> No Subjects Selected </i> </td> </tr>
-			<?php 
-			} else{
-			foreach($sub_array as $subject_id){
-				
-				$query= "SELECT * FROM subjects WHERE sub_id=$subject_id";
-				
-				$result4 = mysqli_query($connect, $query);
-				
-				$row4 = mysqli_fetch_assoc($result4);
-			 ?>
-			<tr>
-			<td>	
-				<?php echo $row4["subject_name"]; ?>
-			</td> 
-			<td>
-				<a href="student/delete_subject.php?st_id=<?php echo $row['st_id']; ?>&sub_id=<?php echo $row4['sub_id']; ?>" onclick="return confirm('Do you want to delete this subject?')">  Delete </a>	
-			</td>
+		<table class="table table-striped table-hover text-center">
+			<tr class="bg-secondary text-white">
+					<th colspan="2">Assigned Subjects</th>
+				</tr>
+					<?php 
+					if(empty($sub_array)){   ?>
+						<tr> <td colspan="2"> <i> No Subjects Selected </i> </td> </tr>
+					<?php 
+					} else{
+					foreach($sub_array as $subject_id){
+						
+						$query= "SELECT * FROM subjects WHERE sub_id=$subject_id";
+						
+						$result4 = mysqli_query($connect, $query);
+						
+						$row4 = mysqli_fetch_assoc($result4);
+					?>
+					<tr>
+					<td>	
+						<?php echo $row4["subject_name"]; ?>
+					</td> 
+					<td>
+						<a href="student/delete_subject.php?st_id=<?php echo $row['st_id']; ?>&sub_id=<?php echo $row4['sub_id']; ?>" onclick="return confirm('Do you want to delete this subject?')" class="btn btn-danger p-1">  <i class="bi bi-trash"></i> </a>		
+					</td>
 
-			</tr>
-			<?php
-			} }
-			?> 
-		</tr>
-	</table>
+					</tr>
+					<?php
+					} }
+					?> 
+				</tr>
+			</table>
 	
 	
 	
@@ -141,53 +153,58 @@
 		$selected_subjects[] = $row3["sub_id"];  
 	}
 	?>
-	<br>
 	
-	<form action="student/student_subject_store.php" method="post"> 
-	<input type="hidden" name="st_id" value="<?php echo $id; ?>">
-	<table border="1">
-		<tr>
-			<td><label for="subject">Subjects:</label></td>
-			<td>
-			<?php 
-				//$query2 = "SELECT sub_id, subject_name FROM subjects";
-				
-				$gr_id= $row["grade_id"];
-				$query2 = "SELECT sub_id FROM subject_grade where gr_id='$gr_id' ";
-				$result2 = mysqli_query($connect, $query2);
-				
-				$subjects = [];
-				while ($row2 = mysqli_fetch_assoc($result2)) {
-					$subjects[] = $row2["sub_id"];  
-					
-					$sub_id= $row2["sub_id"];
-					$query3= "SELECT subject_name FROM subjects where sub_id='$sub_id' ";
-					$result3 = mysqli_query($connect, $query3);
-					
-					$row3 = mysqli_fetch_assoc($result3);	
-					$checked = in_array($sub_id,$selected_subjects)? "checked": "" ; 
-					?>	
-					<input type="checkbox" id="subjects" name="subjects[]" value="<?php echo $sub_id; ?>" <?php echo $checked; ?>>
-					<label><?php echo $row3["subject_name"]; ?></label><br>
-				<?php } ?>
-			
-			<?php /*foreach ($subjects as $subject): ?>
-					<input type="checkbox" id="subjects" name="subjects[]" value="<?php echo $subject['sub_id']; ?>" <?php if(in_array($subject['sub_id'],$selected_subjects)){echo "checked";} ?>>
-					<label><?php echo $subject['subject_name']; ?></label><br>
-				<?php endforeach; */ ?>
-					
-			
-			<!-- using while loop only -->
-			 <!-- <?php while ($subject = mysqli_fetch_assoc($result2)) { ?>
-					<input type="checkbox" id="subjects[]" name="subjects[]" value="<?php echo $subject['sub_id']; ?>">
-					<label><?php echo $subject['subject_name']; ?></label><br>
-			<?php } ?> -->
-            </td>
-		</tr>
-		<tr> <td colspan="2" style="text-align: right;"> <input type="submit" value="Save" > </td></tr>
-	</table>
-	</form>
 
-	<div class="back">
-    	<a href="index.php?section=student&page=index" class="back-btn">← Back to Student List</a>
+		<form action="student/student_subject_store.php" method="post"> 
+			<input type="hidden" name="st_id" value="<?php echo $id; ?>">
+				<div class="row"> 
+					<div class="col-6">
+						<label for="subject"> <h6 class="p-3"> Choose Subjects: </h6></label>	
+					</div>
+					<div class="col-6">	
+						<?php 
+							//$query2 = "SELECT sub_id, subject_name FROM subjects";
+							
+							$gr_id= $row["grade_id"];
+							$query2 = "SELECT sub_id FROM subject_grade where gr_id='$gr_id' ";
+							$result2 = mysqli_query($connect, $query2);
+							
+							$subjects = [];
+							while ($row2 = mysqli_fetch_assoc($result2)) {
+								$subjects[] = $row2["sub_id"];  
+								
+								$sub_id= $row2["sub_id"];
+								$query3= "SELECT subject_name FROM subjects where sub_id='$sub_id' ";
+								$result3 = mysqli_query($connect, $query3);
+								
+								$row3 = mysqli_fetch_assoc($result3);	
+								$checked = in_array($sub_id,$selected_subjects)? "checked": "" ; 
+								?>	
+								<input type="checkbox" id="subjects" name="subjects[]" value="<?php echo $sub_id; ?>" <?php echo $checked; ?>>
+								<label><?php echo $row3["subject_name"]; ?></label><br>
+							<?php } ?>
+					
+					<?php /*foreach ($subjects as $subject): ?>
+							<input type="checkbox" id="subjects" name="subjects[]" value="<?php echo $subject['sub_id']; ?>" <?php if(in_array($subject['sub_id'],$selected_subjects)){echo "checked";} ?>>
+							<label><?php echo $subject['subject_name']; ?></label><br>
+						<?php endforeach; */ ?>
+							
+					
+					<!-- using while loop only -->
+					<!-- <?php while ($subject = mysqli_fetch_assoc($result2)) { ?>
+							<input type="checkbox" id="subjects[]" name="subjects[]" value="<?php echo $subject['sub_id']; ?>">
+							<label><?php echo $subject['subject_name']; ?></label><br>
+					<?php } ?> -->
+				</div>
+				
+				<div class="d-flex justify-content-between">
+					<a href="index.php?section=student&page=index" class="btn btn-secondary"> <i class="bi bi-arrow-left-circle"></i>  Back to Student List</a>
+					<input type="submit" value="Save" class="btn btn-success"> 
+				</div>
+
+			</form>
+
+		
+		</div>
+		</div>
 	</div>

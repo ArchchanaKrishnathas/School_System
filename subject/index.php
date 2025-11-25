@@ -33,7 +33,7 @@
 				<th>Subject Order</th>
 				<th>Subject Color</th>
 				<th>Subject No</th>
-				<th colspan="3" class="text-center">Action</th>
+				<th class="px-5">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -45,9 +45,9 @@
 					<td><?php echo $row["subject_order"]; ?></td>
 					<td> <input type="color" value="<?php echo $row["subject_color"]; ?>"></td>
 					<td><?php echo $row["subject_no"]; ?></td>
-					<td> <a href="index.php?section=subject&page=edit&sub_id=<?php echo $row['sub_id'];?>" class="btn btn-warning"> edit </a> </td>
-					<td class="me-0"> <a href="subject/delete.php?sub_id=<?php echo $row['sub_id'];?>" onclick="return confirm('Do you want to delete?')" class="btn btn-danger"> delete </a> </td>
-					<td class="me-0" abbr=""> <a href="index.php?section=subject&page=show&sub_id=<?php echo $row['sub_id'];?>" class="btn btn-info"> show </a> </td>
+					<td> <a href="index.php?section=subject&page=edit&sub_id=<?php echo $row['sub_id'];?>" class="btn btn-warning me-2"> edit </a>
+					<a href="subject/delete.php?sub_id=<?php echo $row['sub_id'];?>" onclick="return confirm('Do you want to delete?')" class="btn btn-danger me-2"> delete </a> 
+					<a href="index.php?section=subject&page=show&sub_id=<?php echo $row['sub_id'];?>" class="btn btn-info me-2"> show </a> </td>
 				</tr>
 			<?php } ?>
 		</tbody>		
