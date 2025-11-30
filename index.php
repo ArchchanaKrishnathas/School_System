@@ -48,6 +48,8 @@
 <body>
 		<?php 
 			include('auth/auth_check.php');
+
+			require 'vendor/autoload.php';   // For times ago-   using Install Carbon (in terminal :    composer require nesbot/carbon)
 		?>
 		
 		<div class="sidebar">

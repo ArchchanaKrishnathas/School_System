@@ -9,7 +9,8 @@
 	<?php
 	require_once ('config.php');
 	
-	$query = "SELECT * FROM grades";
+	//$query = "SELECT * FROM grades";
+	$query = "SELECT * FROM grades WHERE deleted_at IS NULL ORDER BY grade_order";
 	$results = mysqli_query($connect, $query);
 	
 	if (!$results) {

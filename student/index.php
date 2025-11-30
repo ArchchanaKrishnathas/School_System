@@ -13,8 +13,9 @@
 	
 	//$query = "SELECT students.*,grades.grade_name FROM students INNER JOIN grades ON students.grade_id = grades.gr_id";
 	   // Soft Delete
-	$query = "SELECT students.*, grades.grade_name FROM students INNER JOIN grades ON students.grade_id = grades.gr_id WHERE students.deleted_at IS NULL";
-	
+	//$query = "SELECT students.*, grades.grade_name FROM students INNER JOIN grades ON students.grade_id = grades.gr_id WHERE students.deleted_at IS NULL";
+	$query = "SELECT students.*, grades.grade_name FROM students LEFT JOIN grades ON students.grade_id = grades.gr_id WHERE students.deleted_at IS NULL";
+
 	$results = mysqli_query($connect, $query);
 	
 	if (!$results) { 
@@ -60,7 +61,23 @@
 					<td><?php echo $row["father_name"]; ?></td>
 					<td><?php echo $row["student_name"]; ?></td>
 					<td><?php echo $row["admission_no"]; ?></td>
-					<td><?php echo $row["grade_name"]; ?></td>
+
+					<?php 
+						$grade_id= $row['grade_id'];
+						$deleted_grade= "SELECT gr_id, grade_name FROM grades WHERE gr_id='$grade_id' AND deleted_at IS NOT NULL";
+						$deleted_results = mysqli_query($connect, $deleted_grade);
+						$deleted_row= mysqli_fetch_assoc($deleted_results);
+						if(isset($deleted_row['grade_name'])){
+							$grade_name= "No grade";
+						} else{
+							$grade_name=  $row['grade_name'];
+						}
+
+					?>
+					
+					<!-- <td><?php echo $row["grade_name"]; ?></td> -->
+
+					<td><?php echo $grade_name; ?></td>
 					<td><?php echo $row["nic_no"]; ?></td>
 					<td><?php echo $row["date_of_birth"]; ?></td>
 					<td><?php echo $row["gender"]; ?></td>

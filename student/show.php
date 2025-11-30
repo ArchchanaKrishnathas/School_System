@@ -10,7 +10,9 @@
 	$id= $_GET["st_id"];
 	
 	require_once ('config.php');
-	
+
+	$user_name=$_SESSION['user_name'];
+
 	//$query="SELECT * FROM students where st_id='$id' ";
 	$query = "SELECT students.*,grades.grade_name FROM students INNER JOIN grades ON students.grade_id = grades.gr_id WHERE st_id='$id' ";
 	
@@ -110,6 +112,36 @@
 						echo $row1["subject_name"]. "<br>"; 
 				 } ?>
 				</td>
+			</tr>
+			<tr>
+				<th>created_at </th>
+				<td> 
+					<?php
+						use Carbon\Carbon;
+						$createdAt = $row["created_at"];
+						echo Carbon::parse($createdAt)->setTimezone('Asia/Colombo')->diffForHumans();
+					?>
+				</td>
+			</tr>
+			<tr>
+				<th>created_by</th>
+				<td> <?php echo $user_name; ?></td>
+			</tr>
+			<tr>
+				<th>updated_at</th>
+				<td> <?php echo $row["updated_at"]; ?></td>
+			</tr>
+			<tr>
+				<th>updated_by</th>
+				<td> <?php echo $row["updated_by"]; ?></td>
+			</tr>	
+			<tr>
+				<th>deleted_at</th>
+				<td> <?php echo $row["deleted_at"]; ?></td>
+			</tr>	
+			<tr>
+				<th>deleted_by</th>
+				<td> <?php echo $row["deleted_by"]; ?></td>
 			</tr>	
 		</table>
 		
