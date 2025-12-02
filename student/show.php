@@ -118,8 +118,10 @@
 				<td> 
 					<?php
 						use Carbon\Carbon;
+
 						$createdAt = $row["created_at"];
-						echo Carbon::parse($createdAt)->setTimezone('Asia/Colombo')->diffForHumans();
+
+						echo Carbon::parse($createdAt,'Asia/Colombo')->diffForHumans();
 					?>
 				</td>
 			</tr>
